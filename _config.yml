@@ -1,0 +1,44 @@
+title: UnifAPI
+tagline: Unified public-data API for AI agents
+description: >-
+  UnifAPI is a unified public-data API for AI agents. Call Twitter, YouTube,
+  TikTok, Instagram, Reddit, Threads, Google SERP, Bing SERP, Google Trends,
+  web scrape, and news from a single endpoint, with one API key, one bill,
+  and pay-per-call pricing — no subscriptions.
+
+url: https://unif-api.github.io
+baseurl: /unifapi
+
+repository: unif-api/unifapi
+
+remote_theme: pages-themes/cayman@v0.2.0
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-readme-index
+
+# jekyll-seo-tag will emit a self-canonical <link rel="canonical"> on every page
+# pointing to {{ site.url }}{{ site.baseurl }}{{ page.url }}.
+
+author:
+  name: UnifAPI
+  url: https://unifapi.com
+
+twitter:
+  card: summary_large_image
+
+social:
+  name: UnifAPI
+  links:
+    - https://unifapi.com
+    - https://github.com/unif-api/unifapi
+
+# Show .md files cleanly; strip the extension in generated URLs
+permalink: pretty
+
+exclude:
+  - LICENSE
+  - .gitignore
+  - README.md.bak
