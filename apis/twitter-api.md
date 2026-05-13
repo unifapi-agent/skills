@@ -1,3 +1,9 @@
+---
+title: Twitter / X API
+nav_order: 1
+parent: APIs
+---
+
 # Twitter / X API for AI agents — UnifAPI
 
 [UnifAPI's Twitter / X API](https://unifapi.com/apis/twitter) gives an AI agent server-side access to public Twitter data — tweets, users, timelines, replies, search — through one normalized HTTP endpoint, billed per call.

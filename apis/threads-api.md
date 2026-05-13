@@ -1,3 +1,9 @@
+---
+title: Threads API
+nav_order: 6
+parent: APIs
+---
+
 # Threads API for AI agents — UnifAPI
 
 [UnifAPI's Threads API](https://unifapi.com/apis/threads) gives AI agents access to Threads (Meta) posts, profiles, and replies through one normalized endpoint.

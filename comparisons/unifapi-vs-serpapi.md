@@ -1,3 +1,9 @@
+---
+title: vs SerpAPI
+nav_order: 7
+parent: Comparisons
+---
+
 # UnifAPI vs SerpAPI
 
 How [UnifAPI](https://unifapi.com) and SerpAPI compare for AI agents that need search engine results.

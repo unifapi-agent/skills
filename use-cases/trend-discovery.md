@@ -1,3 +1,9 @@
+---
+title: Trend discovery
+nav_order: 2
+parent: Use cases
+---
+
 # Trend & content discovery with UnifAPI
 
 Build an AI agent that surfaces what's trending across TikTok, YouTube, Reddit, and Google — through one unified API. Live page: [unifapi.com/solutions/trend-discovery](https://unifapi.com/solutions/trend-discovery).

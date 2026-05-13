@@ -1,3 +1,9 @@
+---
+title: vs Composio
+nav_order: 3
+parent: Comparisons
+---
+
 # UnifAPI vs Composio
 
 How [UnifAPI](https://unifapi.com) and Composio compare for AI agent builders.

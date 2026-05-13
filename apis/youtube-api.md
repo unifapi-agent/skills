@@ -1,3 +1,9 @@
+---
+title: YouTube API
+nav_order: 2
+parent: APIs
+---
+
 # YouTube API for AI agents — UnifAPI
 
 [UnifAPI's YouTube API](https://unifapi.com/apis/youtube) gives AI agents normalized access to YouTube videos, channels, comments, transcripts, and trending lists — one bearer key, pay-per-call.

@@ -1,3 +1,9 @@
+---
+title: News Sources API
+nav_order: 13
+parent: APIs
+---
+
 # News Sources API for AI agents — UnifAPI
 
 [UnifAPI's News Sources API](https://unifapi.com/apis/news-sources) lets AI agents browse and filter news by publication — useful when you want all coverage from a specific outlet rather than a keyword search.

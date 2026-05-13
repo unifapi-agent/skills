@@ -1,3 +1,9 @@
+---
+title: TikTok API
+nav_order: 3
+parent: APIs
+---
+
 # TikTok API for AI agents — UnifAPI
 
 [UnifAPI's TikTok API](https://unifapi.com/apis/tiktok) gives AI agents access to TikTok videos, profiles, hashtags, sounds, and the trending feed — through one normalized endpoint.

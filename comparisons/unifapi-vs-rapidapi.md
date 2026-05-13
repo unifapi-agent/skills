@@ -1,3 +1,9 @@
+---
+title: vs RapidAPI
+nav_order: 5
+parent: Comparisons
+---
+
 # UnifAPI vs RapidAPI
 
 A side-by-side comparison of [UnifAPI](https://unifapi.com) and RapidAPI for teams building AI agents that need public-data APIs (Twitter, Google SERP, web scrape, news, and more).

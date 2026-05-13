@@ -1,3 +1,9 @@
+---
+title: News Search API
+nav_order: 12
+parent: APIs
+---
+
 # News Search API for AI agents — UnifAPI
 
 [UnifAPI's News Search API](https://unifapi.com/apis/news-search) gives AI agents real-time, queryable access to global news articles — one bearer key, pay-per-call.

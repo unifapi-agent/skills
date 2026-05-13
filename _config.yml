@@ -1,5 +1,4 @@
 title: UnifAPI
-tagline: Unified public-data API for AI agents
 description: >-
   UnifAPI is a unified public-data API for AI agents. Call Twitter, YouTube,
   TikTok, Instagram, Reddit, Threads, Google SERP, Bing SERP, Google Trends,
@@ -11,7 +10,40 @@ baseurl: /unifapi
 
 repository: unif-api/unifapi
 
-remote_theme: pages-themes/cayman@v0.2.0
+remote_theme: just-the-docs/just-the-docs
+
+color_scheme: light
+search_enabled: true
+search:
+  heading_level: 3
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+heading_anchors: true
+
+aux_links:
+  "GitHub":
+    - "https://github.com/unif-api/unifapi"
+  "unifapi.com":
+    - "https://unifapi.com"
+aux_links_new_tab: true
+
+nav_external_links:
+  - title: API catalog (unifapi.com)
+    url: https://unifapi.com/apis
+  - title: Pricing
+    url: https://unifapi.com/pricing
+  - title: MCP server
+    url: https://unifapi.com/mcp
+
+footer_content: >-
+  &copy; UnifAPI · <a href="https://unifapi.com">unifapi.com</a> ·
+  <a href="https://github.com/unif-api/unifapi">GitHub</a>
+
+# Optional callouts used by some pages (not required)
+callouts:
+  note:
+    color: blue
 
 plugins:
   - jekyll-remote-theme
@@ -19,26 +51,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-readme-index
 
-# jekyll-seo-tag will emit a self-canonical <link rel="canonical"> on every page
-# pointing to {{ site.url }}{{ site.baseurl }}{{ page.url }}.
-
-author:
-  name: UnifAPI
-  url: https://unifapi.com
-
-twitter:
-  card: summary_large_image
-
-social:
-  name: UnifAPI
-  links:
-    - https://unifapi.com
-    - https://github.com/unif-api/unifapi
-
-# Show .md files cleanly; strip the extension in generated URLs
 permalink: pretty
 
 exclude:
   - LICENSE
   - .gitignore
-  - README.md.bak
+  - scripts/

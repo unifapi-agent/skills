@@ -1,3 +1,9 @@
+---
+title: Pay-per-call vs subscription APIs
+nav_order: 3
+parent: Guides
+---
+
 # Pay-per-call vs subscription APIs — what AI agent builders actually need
 
 Why [UnifAPI](https://unifapi.com) prices in credits, not monthly tiers — and when each model wins.

@@ -1,3 +1,9 @@
+---
+title: MCP server
+nav_order: 4
+parent: Docs
+---
+
 # MCP server — plug UnifAPI into Claude, Cursor, Codex
 
 [UnifAPI](https://unifapi.com) ships a hosted [Model Context Protocol](https://modelcontextprotocol.io) server. Add one block to your client config and your assistant can search Google, fetch tweets, scrape a URL, or pull TikTok trending data — without you writing a tool wrapper.

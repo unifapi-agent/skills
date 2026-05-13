@@ -1,3 +1,9 @@
+---
+title: Google Trends API
+nav_order: 9
+parent: APIs
+---
+
 # Google Trends API for AI agents — UnifAPI
 
 [UnifAPI's Google Trends API](https://unifapi.com/apis/google-trends) gives AI agents structured trending-topic and interest-over-time data through one normalized endpoint.

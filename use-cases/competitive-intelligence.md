@@ -1,3 +1,9 @@
+---
+title: Competitive intelligence
+nav_order: 3
+parent: Use cases
+---
+
 # Competitive intelligence with UnifAPI
 
 Build an AI agent that tracks competitor product moves, SERP positioning, hiring signals, and press coverage — through a single public-data API. Live: [unifapi.com/solutions/competitive-intelligence](https://unifapi.com/solutions/competitive-intelligence).

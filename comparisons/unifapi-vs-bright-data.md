@@ -1,3 +1,9 @@
+---
+title: vs Bright Data
+nav_order: 2
+parent: Comparisons
+---
+
 # UnifAPI vs Bright Data
 
 How [UnifAPI](https://unifapi.com) compares to Bright Data for AI agent builders who need public-web data.

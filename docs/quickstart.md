@@ -1,3 +1,9 @@
+---
+title: Quickstart
+nav_order: 1
+parent: Docs
+---
+
 # Quickstart — Call any API with one key
 
 Get an AI agent calling Twitter, Google SERP, a URL scraper, and the news in under five minutes with [UnifAPI](https://unifapi.com) — a unified public-data API for AI agents.

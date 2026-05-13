@@ -1,3 +1,9 @@
+---
+title: Authentication
+nav_order: 2
+parent: Docs
+---
+
 # Authentication
 
 [UnifAPI](https://unifapi.com) uses bearer-token authentication. One key authorizes every endpoint in the [API catalog](https://unifapi.com/apis) — no per-platform OAuth, no per-user auth dance.

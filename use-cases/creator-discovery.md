@@ -1,3 +1,9 @@
+---
+title: Creator discovery
+nav_order: 5
+parent: Use cases
+---
+
 # Influencer & creator discovery with UnifAPI
 
 Find, score, and shortlist creators across Twitter / X, YouTube, TikTok, and Instagram — through one unified API. Live: [unifapi.com/solutions/creator-discovery](https://unifapi.com/solutions/creator-discovery).

@@ -1,3 +1,9 @@
+---
+title: Reddit API
+nav_order: 5
+parent: APIs
+---
+
 # Reddit API for AI agents — UnifAPI
 
 [UnifAPI's Reddit API](https://unifapi.com/apis/reddit) gives AI agents normalized access to subreddits, posts, comments, and search — one bearer key, pay-per-call.

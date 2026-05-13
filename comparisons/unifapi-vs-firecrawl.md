@@ -1,3 +1,9 @@
+---
+title: vs Firecrawl
+nav_order: 4
+parent: Comparisons
+---
+
 # UnifAPI vs Firecrawl
 
 How [UnifAPI](https://unifapi.com) compares to Firecrawl for AI agents that need web data.

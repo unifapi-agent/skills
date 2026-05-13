@@ -1,3 +1,8 @@
+---
+title: Home
+nav_order: 1
+---
+
 # UnifAPI — One Unified API for AI Agents
 
 > **UnifAPI is a unified public-data API gateway for AI agents.** Call Twitter, YouTube, TikTok, Reddit, Google SERP, web scrape, and news from a single endpoint, with one API key, one bill, and pay-per-call pricing — no subscriptions.

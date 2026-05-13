@@ -1,3 +1,9 @@
+---
+title: Lead enrichment
+nav_order: 6
+parent: Use cases
+---
+
 # Lead & company enrichment with UnifAPI
 
 Enrich a CRM record from the open web — company site, news mentions, social presence, SERP footprint — through one API. Live: [unifapi.com/solutions/lead-enrichment](https://unifapi.com/solutions/lead-enrichment).

@@ -1,3 +1,9 @@
+---
+title: Instagram API
+nav_order: 4
+parent: APIs
+---
+
 # Instagram API for AI agents — UnifAPI
 
 [UnifAPI's Instagram API](https://unifapi.com/apis/instagram) gives AI agents public access to Instagram profiles, posts, reels, and hashtags through one normalized endpoint.

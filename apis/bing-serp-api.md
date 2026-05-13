@@ -1,3 +1,9 @@
+---
+title: Bing SERP API
+nav_order: 8
+parent: APIs
+---
+
 # Bing SERP API for AI agents — UnifAPI
 
 [UnifAPI's Bing SERP API](https://unifapi.com/apis/bing-serp) returns structured Bing search results — organic, news, images — for AI agents.

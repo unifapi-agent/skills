@@ -1,3 +1,9 @@
+---
+title: Social listening
+nav_order: 1
+parent: Use cases
+---
+
 # Social listening & brand monitoring with UnifAPI
 
 Build an AI agent that tracks brand mentions, sentiment, and emerging conversation across Twitter / X, Reddit, TikTok, and news — through a single API. Live use-case page: [unifapi.com/solutions/social-listening](https://unifapi.com/solutions/social-listening).

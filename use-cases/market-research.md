@@ -1,3 +1,9 @@
+---
+title: Market research
+nav_order: 4
+parent: Use cases
+---
+
 # Market & news research with UnifAPI
 
 Programmatic market research that combines search engine results, real-time news, and on-demand web scraping. Live: [unifapi.com/solutions/market-research](https://unifapi.com/solutions/market-research).

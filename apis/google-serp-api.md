@@ -1,3 +1,9 @@
+---
+title: Google SERP API
+nav_order: 7
+parent: APIs
+---
+
 # Google SERP API for AI agents — UnifAPI
 
 [UnifAPI's Google SERP API](https://unifapi.com/apis/google-serp) returns structured Google search results — organic, ads, knowledge panel, related searches — for AI agents that need to read the open web.

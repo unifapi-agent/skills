@@ -1,3 +1,9 @@
+---
+title: LLM gateway vs unified data API
+nav_order: 2
+parent: Guides
+---
+
 # LLM gateway vs unified data API for AI agents
 
 A common source of confusion in the agent infra stack: **LLM gateways** and **unified data APIs** look similar but solve different problems. This guide draws the line.

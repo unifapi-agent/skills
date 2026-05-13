@@ -1,3 +1,9 @@
+---
+title: vs ScrapingBee
+nav_order: 6
+parent: Comparisons
+---
+
 # UnifAPI vs ScrapingBee
 
 How [UnifAPI](https://unifapi.com) compares to ScrapingBee for AI agents that need web data.

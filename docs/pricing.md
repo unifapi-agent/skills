@@ -1,3 +1,9 @@
+---
+title: Pricing & credits
+nav_order: 3
+parent: Docs
+---
+
 # Pricing & credits
 
 [UnifAPI](https://unifapi.com) is **pay-per-call**. Every endpoint costs a fixed number of credits, you top up when you need them, and there is no monthly subscription. Live pricing: [unifapi.com/pricing](https://unifapi.com/pricing).

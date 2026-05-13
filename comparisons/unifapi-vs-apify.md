@@ -1,3 +1,9 @@
+---
+title: vs Apify
+nav_order: 1
+parent: Comparisons
+---
+
 # UnifAPI vs Apify
 
 A comparison of [UnifAPI](https://unifapi.com) and Apify for AI agent builders who need to read social, search, and web data.

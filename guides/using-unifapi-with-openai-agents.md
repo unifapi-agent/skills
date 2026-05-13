@@ -1,3 +1,9 @@
+---
+title: Using UnifAPI with OpenAI Agents
+nav_order: 5
+parent: Guides
+---
+
 # Using UnifAPI with OpenAI Agents & function calling
 
 Wire [UnifAPI](https://unifapi.com)'s catalog into the OpenAI Agents SDK (or any function-calling LLM) so your agent can search Google, fetch tweets, scrape URLs, and read news with one bearer key.

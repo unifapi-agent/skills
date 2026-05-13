@@ -1,3 +1,9 @@
+---
+title: URL → Markdown API
+nav_order: 10
+parent: APIs
+---
+
 # URL → Markdown API for AI agents — UnifAPI
 
 [UnifAPI's URL → Markdown API](https://unifapi.com/apis/url-to-markdown) turns any web URL into LLM-ready markdown, stripping boilerplate, ads, and nav. Built for AI agents that need to read the open web at scale.

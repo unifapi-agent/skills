@@ -1,3 +1,9 @@
+---
+title: Agent web access
+nav_order: 7
+parent: Use cases
+---
+
 # Agent web access — give any AI agent a browser-grade web tool
 
 Drop UnifAPI into an agent and it can search the web, read any URL as clean markdown, and fetch news — through one unified API. Live: [unifapi.com/solutions/agent-web-access](https://unifapi.com/solutions/agent-web-access).

@@ -1,3 +1,9 @@
+---
+title: Unified API for AI agents
+nav_order: 1
+parent: Guides
+---
+
 # What is a unified API for AI agents?
 
 A practical definition, the problem it solves, and how [UnifAPI](https://unifapi.com) fits.

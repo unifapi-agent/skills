@@ -1,3 +1,9 @@
+---
+title: Using UnifAPI with Claude (MCP)
+nav_order: 4
+parent: Guides
+---
+
 # Using UnifAPI with Claude via MCP
 
 Connect [UnifAPI](https://unifapi.com)'s public-data catalog — Twitter, YouTube, TikTok, Reddit, Google SERP, scrape, news — to Claude (Claude Code, Claude Desktop, or any MCP-compatible client) in under a minute.

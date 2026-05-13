@@ -1,3 +1,9 @@
+---
+title: URL → Structured API
+nav_order: 11
+parent: APIs
+---
+
 # URL → Structured Data API for AI agents — UnifAPI
 
 [UnifAPI's URL → Structured API](https://unifapi.com/apis/url-to-data) turns any URL into a typed JSON object matching a schema you supply — an LLM-extraction call wrapped as one endpoint.

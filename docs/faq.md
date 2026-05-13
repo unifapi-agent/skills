@@ -1,3 +1,9 @@
+---
+title: FAQ
+nav_order: 5
+parent: Docs
+---
+
 # Frequently asked questions
 
 Common questions about [UnifAPI](https://unifapi.com) — the unified public-data API for AI agents.
