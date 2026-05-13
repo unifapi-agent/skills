@@ -1,6 +1,7 @@
 ---
 title: Home
 nav_order: 1
+permalink: /
 ---
 
 # UnifAPI — One Unified API for AI Agents
