@@ -1,0 +1,13 @@
+{
+  "name": "unifapi-skills",
+  "owner": {
+    "name": "UnifAPI",
+    "email": "support@unifapi.com"
+  },
+  "plugins": [
+    {
+      "name": "unifapi",
+      "source": "./"
+    }
+  ]
+}

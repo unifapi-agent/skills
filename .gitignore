@@ -1,1 +1,12 @@
+# dependencies
+/node_modules
+package-lock.json
+
+# agent clients
+.claude
+
+# eval workspaces and generated scratch output
+*-workspace/
+
+# misc
 .DS_Store

@@ -1,0 +1,14 @@
+{
+  "name": "unifapi",
+  "displayName": "UnifAPI",
+  "description": "Skills and OAuth MCP server for UnifAPI public-data workflows: social, search, scrape, news, and agent-ready analysis.",
+  "version": "1.0.0",
+  "author": {
+    "name": "UnifAPI",
+    "url": "https://unifapi.com"
+  },
+  "homepage": "https://unifapi.com",
+  "repository": "https://github.com/unifapi-agent/skills",
+  "license": "MIT",
+  "keywords": ["unifapi", "mcp", "public-data", "agents", "social-data", "search-api"]
+}

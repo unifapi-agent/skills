@@ -1,0 +1,17 @@
+{
+  "name": "unifapi-skills",
+  "metadata": {
+    "description": "UnifAPI public-data skills for Claude Code"
+  },
+  "owner": {
+    "name": "UnifAPI",
+    "email": "support@unifapi.com"
+  },
+  "plugins": [
+    {
+      "name": "unifapi",
+      "source": "./",
+      "category": "developer-tools"
+    }
+  ]
+}

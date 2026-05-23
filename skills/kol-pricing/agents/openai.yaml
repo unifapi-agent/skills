@@ -1,0 +1,4 @@
+interface:
+  display_name: "KOL Pricing"
+  short_description: "Price and rank KOL campaigns from X handles"
+  default_prompt: "Use $kol-pricing to analyze these X handles for a campaign and recommend pricing."
