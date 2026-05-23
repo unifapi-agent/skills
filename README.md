@@ -1,5 +1,7 @@
 # UnifAPI Skills
 
+[![skills.sh](https://skills.sh/b/unifapi-agent/skills)](https://skills.sh/unifapi-agent/skills)
+
 A collection of skills for AI coding agents following the [Agent Skills](https://agentskills.io) format. Available as a plugin for Claude Code, Cursor, and OpenAI Codex. Includes an OAuth-protected MCP server for live public-data tool access.
 
 ## Install
