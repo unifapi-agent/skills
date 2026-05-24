@@ -25,6 +25,7 @@ Attribution: this skill is adapted from [Antoniaiaiaiaia/kol-pricing](https://gi
 
 - [references/pricing-logic.md](references/pricing-logic.md) - tier matrix, boosts, penalties, ROI formula, top-pick rules, warnings, and DM boundary.
 - [references/original-license.md](references/original-license.md) - original MIT license notice and attribution.
+- [../unifapi/references/twitter-x.md](../unifapi/references/twitter-x.md) - current UnifAPI X/Twitter route map.
 
 ## Workflow
 
@@ -36,10 +37,11 @@ Attribution: this skill is adapted from [Antoniaiaiaiaia/kol-pricing](https://gi
 
 2. Fetch public X/Twitter data.
    - Prefer the available UnifAPI MCP tools. Look for operations corresponding to:
-     - `GET /twitter/users/{screen_name}`
-     - `GET /twitter/users/{screen_name}/tweets`
-     - `GET /twitter/search` for candidate discovery.
+     - `GET /x/users/by/username/{username}` for profile lookup by handle.
+     - `GET /x/users/{id}/tweets` for recent authored posts after resolving the handle to `data.id`.
+     - `GET /x/tweets/search/recent` and `GET /x/autocomplete` for candidate discovery.
    - For each handle, fetch one profile and recent authored tweets. Ten tweets is enough for the default pricing workflow unless the user asks for deeper evidence.
+   - Read follower and engagement metrics from `public_metrics`, not old flat fields.
    - Keep the returned `billing` metadata when available so final reports can mention actual record cost.
    - Do not call `api.x.com` directly unless the user explicitly asks for an official X implementation.
 
@@ -67,12 +69,14 @@ Attribution: this skill is adapted from [Antoniaiaiaiaia/kol-pricing](https://gi
   "handles": [
     {
       "handle": "example",
-      "profile": { "...": "UnifAPI Twitter user object" },
-      "tweets": [{ "...": "UnifAPI Twitter tweet object" }]
+      "profile": { "...": "UnifAPI X user object from response.data" },
+      "tweets": [{ "...": "UnifAPI X tweet object from response.data[]" }]
     }
   ]
 }
 ```
+
+   - The analyzer also accepts whole UnifAPI response envelopes as `profile_response` and `tweets_response`, which is useful when preserving `request_id`, `pagination`, and `billing` beside the normalized report.
 
 4. Run the offline pricing script when a reproducible artifact is useful.
 

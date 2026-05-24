@@ -33,13 +33,15 @@ If none exists, do not ask the user to paste a key into chat. Ask them to config
 ## Calling Pattern
 
 1. Inspect the OpenAPI schema or MCP operation metadata.
-2. Use normalized UnifAPI paths such as `/twitter/users/{screen_name}` rather than upstream vendor paths.
+2. Use normalized UnifAPI paths such as `/x/users/by/username/{username}` rather than upstream vendor paths.
 3. Preserve the response envelope and `billing` metadata when present.
 4. Handle `unauthorized` and `insufficient_credits` explicitly.
+
+For X/Twitter, read [twitter-x.md](twitter-x.md) first. The current public surface uses `/x/...` paths; old `/twitter/...` paths are stale.
 
 ## Curl Shape
 
 ```bash
-curl "https://api.unifapi.com/twitter/users/openai" \
+curl "https://api.unifapi.com/x/users/by/username/openai" \
   -H "Authorization: Bearer $UNIFAPI_API_KEY"
 ```

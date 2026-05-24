@@ -194,6 +194,7 @@ function analyzeSnapshot(snapshot, options) {
   const entries = collectEntries(snapshot);
   const reports = entries.map((entry) => analyzeEntry(entry, product, ideal, options));
   const ranking = rankReports(reports);
+  const billing = sumBilling(reports.map((report) => report.source.billing).filter(Boolean));
   return {
     generated_at: new Date().toISOString(),
     product,
@@ -201,6 +202,7 @@ function analyzeSnapshot(snapshot, options) {
     totals: {
       handles_analyzed: reports.length,
       estimated_unifapi_records: reports.reduce((sum, report) => sum + report.source.estimated_unifapi_records, 0),
+      ...(billing ? { actual_unifapi_billing: billing } : {}),
     },
     ranking,
     reports,
@@ -234,12 +236,10 @@ function collectEntries(snapshot) {
 }
 
 function analyzeEntry(entry, product, ideal, options) {
-  const profileRaw = unwrapObject(
-    entry.profile ?? entry.user ?? entry.profile_response ?? entry.user_response ?? entry.data ?? entry,
-  );
-  const rawTweets = unwrapArray(
-    entry.tweets ?? entry.posts ?? entry.tweets_response ?? entry.user_tweets ?? entry.timeline ?? [],
-  );
+  const profileInput = entry.profile ?? entry.user ?? entry.profile_response ?? entry.user_response ?? entry.data ?? entry;
+  const tweetsInput = entry.tweets ?? entry.posts ?? entry.tweets_response ?? entry.user_tweets ?? entry.timeline ?? [];
+  const profileRaw = unwrapObject(profileInput);
+  const rawTweets = unwrapArray(tweetsInput);
   const handle = parseHandle(
     entry.handle ?? entry.screen_name ?? entry.username ?? profileRaw.screen_name ?? profileRaw.username ?? profileRaw.id,
   );
@@ -258,6 +258,7 @@ function analyzeEntry(entry, product, ideal, options) {
   report.source = {
     tweet_count_analyzed: tweets.length,
     estimated_unifapi_records: 1 + tweets.length,
+    ...sourceMetadata(profileInput, tweetsInput),
   };
   report.recent_tweets = tweets.slice(0, 6).map((tweet) => ({
     id: tweet.id,
@@ -273,8 +274,9 @@ function analyzeEntry(entry, product, ideal, options) {
 }
 
 function unwrapObject(value) {
-  if (value && typeof value === "object" && !Array.isArray(value) && value.data && !Array.isArray(value.data)) {
-    return value.data;
+  if (value && typeof value === "object" && !Array.isArray(value)) {
+    if (Array.isArray(value.data)) return value.data[0] ?? {};
+    if (value.data && !Array.isArray(value.data)) return value.data;
   }
   return value ?? {};
 }
@@ -284,6 +286,56 @@ function unwrapArray(value) {
   if (value && typeof value === "object" && Array.isArray(value.data)) return value.data;
   if (value && typeof value === "object" && Array.isArray(value.items)) return value.items;
   return [];
+}
+
+function sourceMetadata(profileInput, tweetsInput) {
+  const profile = envelopeMetadata(profileInput);
+  const tweets = envelopeMetadata(tweetsInput);
+  const billing = sumBilling([profile?.billing, tweets?.billing].filter(Boolean));
+  return {
+    ...(profile ? { profile_response: profile } : {}),
+    ...(tweets ? { tweets_response: tweets } : {}),
+    ...(billing ? { billing } : {}),
+  };
+}
+
+function envelopeMetadata(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  const meta = {};
+  if (typeof value.request_id === "string") meta.request_id = value.request_id;
+  const pagination = normalizePagination(value.pagination);
+  if (pagination) meta.pagination = pagination;
+  const billing = normalizeBilling(value.billing);
+  if (billing) meta.billing = billing;
+  return Object.keys(meta).length > 0 ? meta : null;
+}
+
+function normalizePagination(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  return {
+    has_more: Boolean(value.has_more),
+    next_cursor: value.next_cursor == null ? null : String(value.next_cursor),
+  };
+}
+
+function normalizeBilling(value) {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return null;
+  return {
+    credits_charged: numberOr(value.credits_charged, 0),
+    records_charged: numberOr(value.records_charged, 0),
+    balance_remaining: numberOr(value.balance_remaining, 0),
+    truncated_due_to_balance: Boolean(value.truncated_due_to_balance),
+  };
+}
+
+function sumBilling(billings) {
+  if (!billings.length) return null;
+  return {
+    credits_charged: billings.reduce((sum, billing) => sum + numberOr(billing.credits_charged, 0), 0),
+    records_charged: billings.reduce((sum, billing) => sum + numberOr(billing.records_charged, 0), 0),
+    balance_remaining: billings[billings.length - 1].balance_remaining,
+    truncated_due_to_balance: billings.some((billing) => billing.truncated_due_to_balance),
+  };
 }
 
 function parseHandle(input) {
@@ -298,17 +350,18 @@ function parseHandle(input) {
 }
 
 function normalizeProfile(raw, handle) {
+  const metrics = objectOr(raw.public_metrics, {});
   const screen = parseHandle(raw.username ?? raw.screen_name ?? raw.id ?? handle) ?? handle;
   return {
     id: stringOr(raw.rest_id ?? raw.user_id ?? raw.id, screen),
     username: screen,
     name: stringOr(raw.name, screen),
     description: stringOr(raw.description ?? raw.desc, ""),
-    followers_count: numberOr(raw.followers_count ?? raw.follower_count ?? raw.sub_count, 0),
-    following_count: numberOr(raw.following_count ?? raw.friends_count ?? raw.friends, 0),
-    tweet_count: numberOr(raw.tweet_count ?? raw.statuses_count, 0),
-    listed_count: numberOr(raw.listed_count, 0),
-    verified: Boolean(raw.verified ?? raw.is_verified ?? raw.is_blue_verified),
+    followers_count: numberOr(metrics.followers_count ?? raw.followers_count ?? raw.follower_count ?? raw.sub_count, 0),
+    following_count: numberOr(metrics.following_count ?? raw.following_count ?? raw.friends_count ?? raw.friends, 0),
+    tweet_count: numberOr(metrics.tweet_count ?? raw.tweet_count ?? raw.statuses_count, 0),
+    listed_count: numberOr(metrics.listed_count ?? raw.listed_count, 0),
+    verified: Boolean(raw.verified ?? raw.is_verified ?? raw.is_blue_verified ?? raw.verified_type),
     verified_type: stringOr(raw.verified_type ?? raw.verification_type, "none"),
     protected: Boolean(raw.protected ?? raw.is_protected),
     created_at: stringOr(raw.created_at, "1970-01-01T00:00:00.000Z"),
@@ -319,7 +372,7 @@ function normalizeProfile(raw, handle) {
 }
 
 function normalizeTweet(raw) {
-  const metrics = raw.public_metrics ?? {};
+  const metrics = objectOr(raw.public_metrics, {});
   const id = stringOr(raw.id ?? raw.tweet_id, "");
   const text = stringOr(raw.text ?? raw.display_text, "");
   if (!id || !text) return null;
@@ -646,6 +699,9 @@ function toMarkdown(analysis) {
   lines.push(`Generated: ${analysis.generated_at}`);
   lines.push(`Product: ${analysis.product.name} - ${analysis.product.tagline}`);
   lines.push(`Estimated UnifAPI records: ${analysis.totals.estimated_unifapi_records}`);
+  if (analysis.totals.actual_unifapi_billing) {
+    lines.push(`Actual UnifAPI billing: ${formatBilling(analysis.totals.actual_unifapi_billing)}`);
+  }
   lines.push("");
   lines.push("## Ranking");
   lines.push("");
@@ -666,6 +722,9 @@ function toMarkdown(analysis) {
     lines.push(`- ROI: ${report.recommendation.roi.roi_multiplier}x`);
     lines.push(`- Rationale: ${report.recommendation.rationale}`);
     lines.push(`- Classification: ${report.classification.rationale}`);
+    if (report.source.billing) {
+      lines.push(`- UnifAPI billing: ${formatBilling(report.source.billing)}`);
+    }
     if (report.warnings.length) {
       lines.push(`- Warnings: ${report.warnings.map((warning) => `${warning.level}: ${warning.message}`).join(" | ")}`);
     }
@@ -692,6 +751,10 @@ function moneyRange(low, high) {
   return `$${low}-$${high}`;
 }
 
+function formatBilling(billing) {
+  return `${billing.records_charged} records, ${billing.credits_charged} credits, balance ${billing.balance_remaining}`;
+}
+
 function tierLabel(tier) {
   return {
     T: "Trader",
@@ -710,6 +773,10 @@ function numberOr(value, fallback) {
 function stringOr(value, fallback) {
   if (value == null) return fallback;
   return String(value);
+}
+
+function objectOr(value, fallback) {
+  return value && typeof value === "object" && !Array.isArray(value) ? value : fallback;
 }
 
 function round(value, digits) {

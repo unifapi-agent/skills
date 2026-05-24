@@ -32,6 +32,7 @@ Read [references/mcp.md](references/mcp.md) for OAuth protected-resource metadat
 - [references/mcp.md](references/mcp.md) - OAuth protected-resource metadata, client setup, and API-key fallback.
 - [references/public-data.md](references/public-data.md) - when UnifAPI is the right data boundary.
 - [references/http-api.md](references/http-api.md) - direct HTTP integration guidance.
+- [references/twitter-x.md](references/twitter-x.md) - current X/Twitter route map and response shapes.
 
 ## Agent Workflow
 

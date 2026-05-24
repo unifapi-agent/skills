@@ -18,7 +18,7 @@ The pricing report needs:
 - Product config: name, pitch, desired action, URL, estimated LTV.
 - Ideal KOL config: preferred tiers, excluded tiers, extra keywords, follower floor, engagement floor.
 
-When using UnifAPI, map `follower_count` to `followers_count`, `following_count` to `following_count`, `is_protected` to `protected`, `is_verified` or `is_blue_verified` to `verified`, and `view_count` to `impression_count`.
+When using UnifAPI X/Twitter, use the current `/x/...` response shape. Map `profile.public_metrics.followers_count` to `followers_count`, `profile.public_metrics.following_count` to `following_count`, `profile.public_metrics.tweet_count` to `tweet_count`, `profile.protected` to `protected`, `profile.verified` or `profile.verified_type` to verification signals, and `tweet.public_metrics.impression_count` to impressions. Legacy flat fields such as `follower_count` and `view_count` are acceptable fallback inputs only.
 
 ## Tiers
 
