@@ -150,6 +150,7 @@ function parseArgs(argv) {
     if (arg === "--input" || arg === "-i") args.input = argv[++i];
     else if (arg === "--out" || arg === "-o") args.out = argv[++i];
     else if (arg === "--json") args.json = argv[++i];
+    else if (arg === "--html") args.html = argv[++i];
     else if (arg === "--limit-tweets") args.limitTweets = Number(argv[++i]);
     else if (arg === "--help" || arg === "-h") args.help = true;
     else throw new Error(`Unknown argument: ${arg}`);
@@ -159,7 +160,7 @@ function parseArgs(argv) {
 
 function usage() {
   return `Usage:
-  node skills/kol-pricing/scripts/analyze-snapshot.mjs --input input.json [--out report.md] [--json report.json]
+  node skills/kol-pricing/scripts/analyze-snapshot.mjs --input input.json [--out report.md] [--json report.json] [--html report.html]
 
 The input JSON should contain product, ideal_kols, and handles[]. Each handle entry should include
 profile plus tweets fetched by the agent through UnifAPI MCP tools.`;
@@ -175,11 +176,12 @@ function main() {
 
   const snapshot = JSON.parse(fs.readFileSync(args.input, "utf8"));
   const analysis = analyzeSnapshot(snapshot, { limitTweets: args.limitTweets });
-  const markdown = toMarkdown(analysis);
+  const markdown = args.out || (!args.json && !args.html) ? toMarkdown(analysis) : null;
 
   if (args.json) writeText(args.json, JSON.stringify(analysis, null, 2));
   if (args.out) writeText(args.out, markdown);
-  if (!args.out && !args.json) console.log(markdown);
+  if (args.html) writeText(args.html, toHtml(analysis));
+  if (!args.out && !args.json && !args.html) console.log(markdown);
 }
 
 function writeText(filePath, text) {
@@ -746,6 +748,761 @@ function toMarkdown(analysis) {
   return lines.join("\n");
 }
 
+function toHtml(analysis) {
+  const product = analysis.product;
+  const productUrl = product.url
+    ? `<a class="link break-all" href="${escapeHtml(product.url)}">${escapeHtml(product.url)}</a>`
+    : "Not provided";
+  const billing = analysis.totals.actual_unifapi_billing
+    ? `<span>Actual billing <b>${escapeHtml(formatBilling(analysis.totals.actual_unifapi_billing))}</b></span>`
+    : `<span>Estimated records <b>${analysis.totals.estimated_unifapi_records}</b></span>`;
+  const reportModules = analysis.reports.map(toKolModuleHtml).join("\n");
+
+  return `<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>KOL Pricing Report - ${escapeHtml(product.name)}</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --bg: oklch(0.982 0.009 82);
+      --panel: oklch(0.996 0.006 82);
+      --panel-2: oklch(0.971 0.012 82);
+      --ink: oklch(0.235 0.018 250);
+      --muted: oklch(0.485 0.018 250);
+      --faint: oklch(0.665 0.014 250);
+      --line: oklch(0.902 0.012 82);
+      --line-strong: oklch(0.818 0.018 82);
+      --success: oklch(0.555 0.14 154);
+      --success-ink: oklch(0.325 0.105 154);
+      --success-soft: oklch(0.952 0.041 154);
+      --success-line: oklch(0.823 0.075 154);
+      --warn: oklch(0.704 0.135 80);
+      --warn-ink: oklch(0.43 0.105 68);
+      --warn-soft: oklch(0.958 0.045 85);
+      --warn-line: oklch(0.842 0.08 83);
+      --danger: oklch(0.577 0.17 28);
+      --danger-ink: oklch(0.382 0.13 28);
+      --danger-soft: oklch(0.958 0.033 28);
+      --danger-line: oklch(0.836 0.07 28);
+      --info: oklch(0.545 0.13 230);
+      --info-soft: oklch(0.953 0.034 230);
+      --shadow: 0 1px 2px oklch(0.235 0.018 250 / 0.05), 0 18px 50px oklch(0.235 0.018 250 / 0.06);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, oklch(0.956 0.03 154 / 0.9), transparent 360px),
+        linear-gradient(180deg, var(--bg), oklch(0.964 0.011 88));
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+      font-variant-numeric: tabular-nums;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .shell { max-width: 1240px; margin: 0 auto; padding: 32px 24px 44px; }
+    .surface {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+    .surface-muted {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+    }
+    .hairline { border-color: var(--line); }
+    .muted { color: var(--muted); }
+    .faint { color: var(--faint); }
+    .link { color: var(--success-ink); text-decoration: underline; text-decoration-color: var(--success-line); text-underline-offset: 3px; }
+    .eyebrow {
+      color: var(--muted);
+      font-size: 0.6875rem;
+      font-weight: 760;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 1.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      padding: 0.25rem 0.625rem;
+      font-size: 0.6875rem;
+      font-weight: 740;
+      line-height: 1;
+      white-space: nowrap;
+      background: var(--panel-2);
+      color: var(--muted);
+    }
+    .tag-green { background: var(--success-soft); border-color: var(--success-line); color: var(--success-ink); }
+    .tag-amber { background: var(--warn-soft); border-color: var(--warn-line); color: var(--warn-ink); }
+    .tag-red { background: var(--danger-soft); border-color: var(--danger-line); color: var(--danger-ink); }
+    .tag-ink { background: var(--ink); border-color: var(--ink); color: oklch(0.982 0.009 82); }
+    .metric {
+      background: var(--panel-2);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.75rem;
+      min-width: 0;
+    }
+    .metric-value { font-size: 1.25rem; line-height: 1.1; font-weight: 800; letter-spacing: 0; }
+    .metric-green { color: var(--success-ink); }
+    .metric-amber { color: var(--warn-ink); }
+    .metric-red { color: var(--danger-ink); }
+    .avatar {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 1.25rem;
+      display: grid;
+      place-items: center;
+      background: var(--ink);
+      color: oklch(0.982 0.009 82);
+      font-size: 2rem;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+    .tier-badge {
+      display: inline-flex;
+      overflow: hidden;
+      border-radius: 10px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: oklch(0.982 0.009 82);
+    }
+    .tier-badge.is-muted {
+      border-color: var(--line-strong);
+      background: var(--panel-2);
+      color: var(--muted);
+    }
+    .tier-letter {
+      padding: 0.875rem 1.25rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.875rem;
+      line-height: 1;
+      font-weight: 500;
+    }
+    .tier-extra {
+      display: flex;
+      align-items: center;
+      padding: 0 0.875rem;
+      background: var(--success);
+      color: oklch(0.982 0.009 82);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+    .matrix-row {
+      display: grid;
+      grid-template-columns: minmax(150px, 1.05fr) 70px minmax(100px, 0.8fr) 110px minmax(220px, 1.8fr);
+      gap: 0.75rem;
+      align-items: center;
+      border-top: 1px solid var(--line);
+      padding: 0.875rem 1rem;
+      background: var(--panel);
+    }
+    .matrix-row.is-rec {
+      background: color-mix(in oklch, var(--success-soft) 72%, var(--panel));
+      border: 1px solid var(--success-line);
+      border-radius: 10px;
+      margin: 0.5rem;
+    }
+    .matrix-row.is-locked { opacity: 0.58; }
+    .fit-dot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 999px;
+      font-size: 0.6875rem;
+      font-weight: 800;
+    }
+    .fit-rec { background: var(--success); color: oklch(0.982 0.009 82); }
+    .fit-ok { background: var(--warn-soft); color: var(--warn-ink); border: 1px solid var(--warn-line); }
+    .fit-no { background: var(--danger-soft); color: var(--danger-ink); border: 1px solid var(--danger-line); }
+    .fit-muted { background: var(--panel-2); color: var(--faint); border: 1px solid var(--line); }
+    .roi-bar {
+      display: flex;
+      height: 1.75rem;
+      overflow: hidden;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+    }
+    .roi-seg {
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 0 0.5rem;
+      color: oklch(0.982 0.009 82);
+      font-size: 0.6875rem;
+      font-weight: 760;
+      border-right: 1px solid oklch(0.982 0.009 82 / 0.65);
+    }
+    .roi-seg:last-child { border-right: 0; }
+    .warning {
+      border-radius: 12px;
+      border: 1px solid var(--warn-line);
+      background: var(--warn-soft);
+      color: var(--warn-ink);
+    }
+    .warning.is-critical {
+      border-color: var(--danger-line);
+      background: var(--danger-soft);
+      color: var(--danger-ink);
+    }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      color: var(--muted);
+      background: var(--panel-2);
+      font-size: 0.6875rem;
+      font-weight: 760;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      white-space: nowrap;
+    }
+    td {
+      border-top: 1px solid var(--line);
+      padding: 0.875rem 1rem;
+      font-size: 0.8125rem;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+    @media (max-width: 760px) {
+      .shell { padding: 20px 14px 32px; }
+      .matrix-row { grid-template-columns: 1fr; gap: 0.45rem; }
+      .matrix-row.is-rec { margin: 0.375rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <header class="mb-6 grid gap-5 lg:grid-cols-[minmax(0,1fr)_340px]">
+      <section class="surface p-6 sm:p-7">
+        <div class="mb-7 flex flex-wrap items-center justify-between gap-3">
+          <p class="text-[0.8125rem] font-semibold muted">${escapeHtml(product.name)} <span class="faint">&middot; KOL Pricing</span></p>
+          <div class="flex flex-wrap gap-2">
+            ${statusTag("Open methodology", "green")}
+            ${statusTag("Tailwind HTML", "ghost")}
+          </div>
+        </div>
+        <p class="eyebrow">Campaign context</p>
+        <h1 class="mt-2 text-[2rem] font-[780] leading-tight tracking-normal sm:text-[2.75rem]">${escapeHtml(product.name)}</h1>
+        <p class="mt-4 max-w-[70ch] text-[0.98rem] font-medium leading-7 muted">${escapeHtml(product.pitch)}</p>
+      </section>
+      <aside class="surface p-5">
+        <dl class="grid gap-4">
+          <div>
+            <dt class="eyebrow">Desired action</dt>
+            <dd class="mt-1 text-sm font-semibold">${escapeHtml(product.desired_action)}</dd>
+          </div>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="surface-muted p-3">
+              <dt class="eyebrow">LTV</dt>
+              <dd class="mt-1 text-xl font-[780]">$${escapeHtml(product.ltv_usd)}</dd>
+            </div>
+            <div class="surface-muted p-3">
+              <dt class="eyebrow">KOLs</dt>
+              <dd class="mt-1 text-xl font-[780]">${analysis.totals.handles_analyzed}</dd>
+            </div>
+          </div>
+          <div>
+            <dt class="eyebrow">Product URL</dt>
+            <dd class="mt-1 text-sm font-semibold">${productUrl}</dd>
+          </div>
+          <div class="pt-1 text-xs muted">${billing}</div>
+        </dl>
+      </aside>
+    </header>
+
+    ${toRecordsModuleHtml(analysis)}
+
+    <section class="mt-6 flex flex-col gap-8">
+      ${reportModules}
+    </section>
+
+    <footer class="mt-8 flex flex-wrap items-center justify-between gap-3 border-t border-dashed hairline pt-5 text-[0.6875rem] faint">
+      <span>Generated <b class="muted">${escapeHtml(analysis.generated_at)}</b> &middot; Methodology <b class="muted">open-source</b></span>
+      <span>Adapted from <a class="link" href="https://github.com/Antoniaiaiaiaia/kol-pricing">Antoniaiaiaiaia/kol-pricing</a>.</span>
+    </footer>
+  </main>
+</body>
+</html>`;
+}
+
+function toRecordsModuleHtml(analysis) {
+  const rows = analysis.ranking.map((item) => {
+    const status = actionForRanking(item);
+    return `<tr>
+      <td class="muted">${item.rank}</td>
+      <td class="font-[760]">@${escapeHtml(item.handle)}</td>
+      <td>${tierPill(item.tier, false)}</td>
+      <td>${statusTag(status.label, status.tone)}</td>
+      <td class="font-semibold">${escapeHtml(fmtCollabLabel(item.top_pick))}</td>
+      <td class="font-[760]">${escapeHtml(item.cash_range)}</td>
+      <td class="font-[760] ${item.roi_multiplier < 0 ? "metric-red" : "metric-green"}">${escapeHtml(formatRoi(item.roi_multiplier))}</td>
+      <td class="muted">${escapeHtml(item.score)}</td>
+    </tr>`;
+  }).join("");
+  const actions = analysis.ranking.slice(0, 3).map((item) => {
+    const status = actionForRanking(item);
+    return `<li class="surface-muted p-4">
+      <div class="flex flex-wrap items-center gap-2">${statusTag(status.label, status.tone)} <b>@${escapeHtml(item.handle)}</b></div>
+      <p class="mt-2 text-xs font-medium muted">${escapeHtml(item.tier)} &middot; ${escapeHtml(item.cash_range)} &middot; ${escapeHtml(formatRoi(item.roi_multiplier))}</p>
+      <p class="mt-1 text-xs font-medium faint">Top pick: ${escapeHtml(fmtCollabLabel(item.top_pick))}. Score: ${escapeHtml(item.score)}.</p>
+    </li>`;
+  }).join("");
+
+  return `<section class="grid gap-4 xl:grid-cols-[minmax(0,1.45fr)_360px]">
+    <div class="surface overflow-hidden">
+      <div class="flex flex-wrap items-end justify-between gap-3 px-5 pb-3 pt-5">
+        <div>
+          <p class="eyebrow">Records</p>
+          <h2 class="mt-1 text-lg font-[760]">Batch ranking</h2>
+        </div>
+        ${statusTag(`${analysis.totals.handles_analyzed} KOL${analysis.totals.handles_analyzed === 1 ? "" : "s"} analyzed`, "ghost")}
+      </div>
+      <div class="table-wrap px-5 pb-5">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>KOL</th>
+              <th>Tier</th>
+              <th>Action</th>
+              <th>Top pick</th>
+              <th>Cash</th>
+              <th>ROI</th>
+              <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+    </div>
+    <aside class="surface p-5">
+      <p class="eyebrow">Decision queue</p>
+      <h2 class="mt-1 text-lg font-[760]">Next best moves</h2>
+      <ol class="mt-4 grid gap-3">${actions || `<li class="text-sm muted">No ranked actions available.</li>`}</ol>
+    </aside>
+  </section>`;
+}
+
+function toKolModuleHtml(report) {
+  const recTag = recommendationTag(report);
+  return `<article class="flex flex-col gap-4" id="kol-${escapeHtml(report.handle)}">
+    <div class="flex flex-wrap items-center gap-2 text-xs font-semibold muted">
+      <span>Analyze</span>
+      <span class="faint">/</span>
+      <span class="font-[760]">${escapeHtml(`@${report.handle}`)}</span>
+      ${statusTag(recTag.label, recTag.tone)}
+    </div>
+    ${profileHeaderModule(report)}
+    ${warningsModule(report)}
+    ${verdictModule(report)}
+    ${collabMatrixModule(report)}
+    ${topPickModule(report)}
+    <div class="grid gap-4 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)]">
+      ${contractModule(report)}
+      ${outreachModule(report)}
+    </div>
+    ${auditModule(report)}
+  </article>`;
+}
+
+function profileHeaderModule(report) {
+  const p = report.profile;
+  const avatar = p.profile_image_url
+    ? `<img class="avatar object-cover" src="${escapeHtml(p.profile_image_url)}" alt="">`
+    : `<div class="avatar">${escapeHtml((p.name || p.username).slice(0, 1).toUpperCase())}</div>`;
+  const metrics = [
+    metricModule("Followers", fmtNumber(p.followers_count), `${fmtCount(p.following_count)} following`, "neutral"),
+    metricModule("Avg engagement", `${report.engagement.engagement_rate.toFixed(2)}%`, engagementSub(report.engagement.engagement_rate), metricTone(report.engagement.engagement_rate, "engagement")),
+    metricModule("Avg impressions", fmtCount(report.engagement.avg_impressions), report.engagement.avg_impressions < 200 ? "possible shadowban" : "recent posts", metricTone(report.engagement.avg_impressions, "impressions")),
+    metricModule("Tweet count", fmtNumber(p.tweet_count), `${fmtCount(p.listed_count)} lists`, "neutral"),
+  ].join("");
+  const joined = formatMonth(p.created_at);
+  const age = handleAgeYears(p.created_at);
+  const verified = p.verified ? statusTag("verified", "green") : "";
+
+  return `<section class="surface p-5 sm:p-6">
+    <div class="grid gap-5 lg:grid-cols-[auto_minmax(0,1fr)]">
+      ${avatar}
+      <div class="min-w-0">
+        <div class="flex flex-wrap items-center gap-2">
+          <h2 class="text-[1.55rem] font-[780] leading-tight tracking-normal">${escapeHtml(p.name)}</h2>
+          ${verified}
+          ${statusTag(`@${p.username}`, "ghost")}
+        </div>
+        <div class="mt-2 flex flex-wrap items-center gap-2 text-[0.8125rem] font-medium muted">
+          ${p.location ? `<span>${escapeHtml(p.location)}</span><span class="faint">&middot;</span>` : ""}
+          <span>Joined ${escapeHtml(joined)}</span>
+          <span class="faint">&middot;</span>
+          <span>${escapeHtml(age)}</span>
+        </div>
+        ${p.description ? `<p class="mt-3 max-w-[72ch] text-sm font-medium leading-6 muted">${escapeHtml(p.description)}</p>` : ""}
+      </div>
+    </div>
+    <div class="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">${metrics}</div>
+  </section>`;
+}
+
+function warningsModule(report) {
+  if (!report.warnings.length) return "";
+  const critical = report.warnings.some((warning) => warning.level === "danger");
+  const items = report.warnings.map((warning) => {
+    const tag = warning.message.split(" - ")[0] || warning.message.split(".")[0];
+    return `<li class="flex gap-3 text-[0.8125rem] font-medium">
+      <span class="mt-[0.45rem] h-1.5 w-1.5 shrink-0 rounded-full" style="background:${warning.level === "danger" ? "var(--danger)" : "var(--warn)"}"></span>
+      <span><b>${escapeHtml(tag)}</b> <span>${escapeHtml(warning.message)}</span></span>
+    </li>`;
+  }).join("");
+  return `<section class="warning ${critical ? "is-critical" : ""} p-4">
+    <div class="mb-3 flex items-center gap-2">
+      <span class="fit-dot ${critical ? "fit-no" : "fit-ok"}">!</span>
+      <h3 class="text-[0.8125rem] font-[780]">${critical ? "Critical, recommend skipping" : `${report.warnings.length} caution${report.warnings.length > 1 ? "s" : ""} on this KOL`}</h3>
+    </div>
+    <ul class="grid gap-2">${items}</ul>
+  </section>`;
+}
+
+function verdictModule(report) {
+  const c = report.classification;
+  const muted = report.warnings.some((warning) => warning.level === "danger") || c.excluded;
+  const tags = c.matched_keywords.slice(0, 6).map((tag) => statusTag(tag, "ghost")).join("");
+  return `<section class="surface p-5">
+    <div class="grid gap-5 md:grid-cols-[auto_minmax(0,1fr)]">
+      <div class="flex flex-col items-start gap-2">
+        <p class="eyebrow">Tier verdict</p>
+        ${tierBadge(c.tier, c.is_tool_builder, muted)}
+        <p class="max-w-[12rem] text-xs font-medium muted">${escapeHtml(tierLabel(c.tier))}</p>
+      </div>
+      <div class="min-w-0">
+        <div class="mb-3 flex flex-wrap items-center gap-2">
+          <span class="eyebrow">Fit with your config</span>
+          ${c.excluded ? statusTag("Out of scope", "red") : c.preferred ? statusTag("Preferred fit", "green") : statusTag("Neutral", "ghost")}
+        </div>
+        <p class="max-w-[75ch] text-[0.95rem] font-semibold leading-7">${escapeHtml(c.rationale)}</p>
+        ${tags ? `<div class="mt-4 flex flex-wrap gap-1.5">${tags}</div>` : ""}
+      </div>
+    </div>
+  </section>`;
+}
+
+function collabMatrixModule(report) {
+  const rows = report.matrix.map((row) => {
+    const fit = fitFromRow(row, report.classification.tier);
+    const recommended = fit.fit === "rec";
+    return `<div class="matrix-row ${recommended ? "is-rec" : ""} ${fit.locked ? "is-locked" : ""}">
+      <div class="flex items-center gap-2 font-[760]">${fit.locked ? `<span class="faint">lock</span>` : ""}${escapeHtml(fmtCollabLabel(row.collab_type))}</div>
+      <div>${fitBadge(fit.fit)}</div>
+      <div class="font-[760]">${escapeHtml(formatCashRange(row.cash_low, row.cash_high))}</div>
+      <div class="text-xs font-semibold muted">${escapeHtml(row.term)}</div>
+      <div class="text-xs font-medium leading-5 muted">${escapeHtml(row.note)}</div>
+    </div>`;
+  }).join("");
+  return `<section class="surface overflow-hidden">
+    <div class="flex flex-wrap items-end justify-between gap-3 px-5 pb-3 pt-5">
+      <div>
+        <p class="eyebrow">Collaboration matrix</p>
+        <h3 class="mt-1 text-lg font-[760]">What kind of deal to offer</h3>
+      </div>
+      ${statusTag("reference pricing", "ghost")}
+    </div>
+    <div class="table-wrap px-5 pb-5">
+      <div class="min-w-[760px] overflow-hidden rounded-xl border hairline">
+        <div class="grid grid-cols-[minmax(150px,1.05fr)_70px_minmax(100px,0.8fr)_110px_minmax(220px,1.8fr)] gap-3 bg-[var(--panel-2)] px-4 py-3 text-[0.6875rem] font-[760] uppercase tracking-[0.06em] muted">
+          <div>Type</div><div>Fit</div><div>Cash</div><div>Term</div><div>Note</div>
+        </div>
+        ${rows}
+      </div>
+    </div>
+  </section>`;
+}
+
+function topPickModule(report) {
+  const rec = report.recommendation;
+  const topPick = rec.top_pick_collab;
+  const isSkip = topPick === "skip";
+  const row = report.matrix.find((item) => item.collab_type === topPick);
+  const stats = [
+    statBox("Cash", isSkip ? "$0" : formatCashRange(rec.cash_low, rec.cash_high), isSkip ? "do not commit budget" : "negotiable", !isSkip),
+    statBox("Term", row?.term ?? "-", "", false),
+    statBox("Affiliate cut", rec.affiliate_pct ? `${rec.affiliate_pct}% LTV` : "-", rec.affiliate_pct ? "12 months" : "", false),
+    statBox("Preferred", report.classification.preferred ? "yes" : report.classification.excluded ? "no" : "neutral", "per your config", false),
+  ].join("");
+  const roi = roiModule(rec.roi, topPick);
+  return `<section class="surface p-5">
+    <div class="mb-5 flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="eyebrow">Top pick</p>
+        <h3 class="mt-1 text-lg font-[760]">${escapeHtml(isSkip ? "Skip, manual review or zero-cash trial" : fmtCollabLabel(topPick))}</h3>
+      </div>
+      ${statusTag(isSkip ? "Manual review" : "Use this deal", isSkip ? "amber" : "green")}
+    </div>
+    <div class="grid gap-5 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.28fr)]">
+      <div>
+        <div class="grid gap-2 sm:grid-cols-2">${stats}</div>
+        <p class="mt-4 text-sm font-semibold leading-6 muted">${escapeHtml(rec.rationale)}</p>
+      </div>
+      ${roi}
+    </div>
+  </section>`;
+}
+
+function contractModule(report) {
+  const items = report.recommendation.contract_terms.map((term) => `<li class="flex gap-3 border-t hairline py-3 first:border-t-0">
+    <span class="mt-0.5 h-4 w-4 shrink-0 rounded border hairline bg-[var(--panel)]"></span>
+    <span class="text-[0.8125rem] font-semibold leading-5">${escapeHtml(term)}</span>
+  </li>`).join("");
+  return `<section class="surface overflow-hidden">
+    <header class="flex items-center justify-between gap-4 px-5 py-4">
+      <div class="flex items-center gap-3">
+        <h3 class="text-base font-[760]">Contract requirements</h3>
+        ${statusTag(`${report.recommendation.contract_terms.length} items`, "ghost")}
+      </div>
+      <span class="text-xs font-medium muted">Checklist ready</span>
+    </header>
+    <div class="border-t hairline px-5 pb-5">
+      <ul>${items}</ul>
+    </div>
+  </section>`;
+}
+
+function outreachModule(report) {
+  const tweets = report.recent_tweets.slice(0, 2).map((tweet) => `<li class="surface-muted px-3 py-2 text-xs font-medium leading-5 muted">${escapeHtml(tweet.text.replace(/\s+/g, " ").slice(0, 220))}</li>`).join("");
+  const constraints = report.dm_brief.constraints.map((item) => `<li>${escapeHtml(item)}</li>`).join("");
+  return `<section class="surface p-5">
+    <div class="mb-4 flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="eyebrow">DM draft</p>
+        <h3 class="mt-1 text-lg font-[760]">Outreach brief</h3>
+      </div>
+      ${statusTag("agent-written copy", "ghost")}
+    </div>
+    <div class="surface-muted p-4 font-mono text-[0.8125rem] leading-7">
+      <p><b>Offer:</b> ${escapeHtml(report.dm_brief.offer)}</p>
+      <p><b>Tone:</b> ${escapeHtml(report.dm_brief.tone)}</p>
+      <p><b>Constraints:</b></p>
+      <ul class="ml-5 list-disc">${constraints}</ul>
+    </div>
+    <div class="mt-3 flex flex-wrap items-center justify-between gap-3 text-xs faint">
+      <span>Recent tweet evidence is available for personalization.</span>
+      <span>tone: <b class="muted">warm</b> &middot; direct &middot; formal</span>
+    </div>
+    ${tweets ? `<ul class="mt-3 grid gap-2">${tweets}</ul>` : ""}
+  </section>`;
+}
+
+function auditModule(report) {
+  const billing = report.source.billing ? ` &middot; UnifAPI <b class="muted">${escapeHtml(formatBilling(report.source.billing))}</b>` : "";
+  return `<section class="flex flex-wrap items-center justify-between gap-3 border-t border-dashed hairline pt-4 text-[0.6875rem] faint">
+    <span>Generated <b class="muted">${escapeHtml(formatDateTime(report.fetched_at))}</b> &middot; API call <b class="muted">${(report.api_latency_ms / 1000).toFixed(1)}s</b>${billing} &middot; Methodology <b class="muted">open-source</b></span>
+    <span class="link">HTML report artifact</span>
+  </section>`;
+}
+
+function metricModule(label, value, sub, tone) {
+  const toneClass = {
+    neutral: "",
+    green: "metric-green",
+    amber: "metric-amber",
+    red: "metric-red",
+  }[tone] ?? "";
+  return `<div class="metric">
+    <div class="eyebrow">${escapeHtml(label)}</div>
+    <div class="metric-value ${toneClass}">${escapeHtml(value)}</div>
+    ${sub ? `<div class="mt-1 text-[0.6875rem] font-medium faint">${escapeHtml(sub)}</div>` : ""}
+  </div>`;
+}
+
+function statBox(label, value, sub, accent) {
+  return `<div class="metric ${accent ? "border-[var(--success-line)] bg-[var(--success-soft)]" : ""}">
+    <div class="eyebrow">${escapeHtml(label)}</div>
+    <div class="metric-value ${accent ? "metric-green" : ""}">${escapeHtml(value)}</div>
+    ${sub ? `<div class="mt-1 text-[0.6875rem] font-medium faint">${escapeHtml(sub)}</div>` : ""}
+  </div>`;
+}
+
+function roiModule(roi, collab) {
+  const segments = roiSegments(roi).map((seg) => `<div class="roi-seg" style="width:${seg.pct}%;background:${seg.color}">${escapeHtml(seg.label)}</div>`).join("");
+  const legend = roiSegments(roi).map((seg) => `<span><b>${escapeHtml(seg.value)}</b> ${escapeHtml(seg.label.toLowerCase())}</span>`).join("");
+  const roiText = roiMultiplierLabel(roi.roi_multiplier, collab);
+  const negative = roi.roi_multiplier < 0 || collab === "skip";
+  return `<div class="surface-muted p-4">
+    <div class="mb-3 flex flex-wrap items-end justify-between gap-3">
+      <div>
+        <p class="eyebrow">ROI breakdown</p>
+        <p class="mt-1 text-xs font-medium muted">Cash cost, reach, registrations, LTV revenue</p>
+      </div>
+      <div class="text-right">
+        <div class="text-[2.35rem] font-[820] leading-none tracking-normal ${negative ? "metric-red" : "metric-green"}">${escapeHtml(roiText)}</div>
+        <div class="mt-1 text-[0.6875rem] font-[760] uppercase tracking-[0.06em] muted">expected ROI</div>
+      </div>
+    </div>
+    <div class="roi-bar">${segments}</div>
+    <div class="mt-2 flex flex-wrap justify-between gap-2 text-[0.6875rem] font-medium muted">${legend}</div>
+  </div>`;
+}
+
+function tierBadge(tier, plusE, muted) {
+  return `<div class="tier-badge ${muted ? "is-muted" : ""}">
+    <div class="tier-letter">${escapeHtml(tier)}</div>
+    ${plusE ? `<div class="tier-extra">+E</div>` : ""}
+  </div>`;
+}
+
+function tierPill(tier, muted) {
+  return `<span class="tag ${muted ? "" : "tag-ink"}">${escapeHtml(tier)}</span>`;
+}
+
+function statusTag(label, tone) {
+  const cls = {
+    green: "tag-green",
+    red: "tag-red",
+    amber: "tag-amber",
+    ink: "tag-ink",
+    ghost: "",
+  }[tone] ?? "";
+  return `<span class="tag ${cls}">${escapeHtml(label)}</span>`;
+}
+
+function recommendationTag(report) {
+  const hasDanger = report.warnings.some((warning) => warning.level === "danger");
+  if (report.classification.excluded) return { tone: "red", label: "Out of scope" };
+  if (hasDanger) return { tone: "red", label: "Skip recommended" };
+  if (report.classification.tier === "M") return { tone: "ink", label: "One-shot only" };
+  if (report.recommendation.top_pick_collab === "skip") return { tone: "amber", label: "Manual review" };
+  if (report.classification.preferred) return { tone: "green", label: "Preferred fit" };
+  return { tone: "green", label: "Recommended" };
+}
+
+function actionForRanking(item) {
+  if (item.top_pick === "skip") return { tone: "red", label: "Skip" };
+  if (item.roi_multiplier >= 1) return { tone: "green", label: "Engage" };
+  return { tone: "amber", label: "Negotiate" };
+}
+
+function fitFromRow(row, tier) {
+  if (row.recommended === "yes") return { fit: "rec", locked: false };
+  if (row.recommended === "maybe") return { fit: "ok", locked: false };
+  if (tier === "M") return { fit: "no", locked: true };
+  return { fit: "red", locked: false };
+}
+
+function fitBadge(fit) {
+  if (fit === "rec") return `<span class="fit-dot fit-rec">ok</span>`;
+  if (fit === "ok") return `<span class="fit-dot fit-ok">ok</span>`;
+  if (fit === "red") return `<span class="fit-dot fit-no">no</span>`;
+  return `<span class="fit-dot fit-muted">no</span>`;
+}
+
+function roiSegments(roi) {
+  return [
+    { pct: roi.cash_cost > 0 ? 18 : 12, label: "Cash cost", value: roi.cash_cost > 0 ? `$${fmtMoney(roi.cash_cost)}` : "$0", color: "var(--danger-ink)" },
+    { pct: 14, label: "Touch", value: `${fmtCount(roi.effective_impressions)} eff`, color: "var(--muted)" },
+    { pct: 30, label: "Registrations", value: `~${fmtCount(roi.estimated_registrations)}`, color: "var(--ink)" },
+    { pct: 38, label: "LTV revenue", value: `$${fmtMoney(roi.estimated_ltv_revenue)}`, color: "var(--success)" },
+  ];
+}
+
+function metricTone(rate, kind) {
+  if (kind === "engagement") {
+    if (rate < 0.5) return "red";
+    if (rate < 1.5) return "amber";
+    return "green";
+  }
+  if (rate < 200) return "red";
+  if (rate < 1000) return "amber";
+  return "green";
+}
+
+function engagementSub(rate) {
+  if (rate < 0.5) return "critical - below floor";
+  if (rate < 1.5) return "borderline";
+  return "healthy";
+}
+
+function fmtNumber(value) {
+  const number = Number(value);
+  if (number >= 1000000) return `${(number / 1000000).toFixed(1).replace(/\.0$/, "")}M`;
+  if (number >= 10000) return `${Math.round(number / 1000)}k`;
+  if (number >= 1000) return `${(number / 1000).toFixed(1).replace(/\.0$/, "")}k`;
+  return number.toLocaleString("en-US");
+}
+
+function fmtCount(value) {
+  return Number(value).toLocaleString("en-US");
+}
+
+function fmtMoney(value) {
+  const number = Number(value);
+  if (number >= 1000) return `${(number / 1000).toFixed(number % 1000 === 0 ? 0 : 1).replace(/\.0$/, "")}k`;
+  return number.toLocaleString("en-US");
+}
+
+function formatCashRange(low, high) {
+  if (low === 0 && high === 0) return "-";
+  if (low === high) return `$${fmtMoney(low)}`;
+  return `$${fmtMoney(low)}-${fmtMoney(high)}`;
+}
+
+function fmtCollabLabel(value) {
+  return {
+    oneshot: "One-shot tweet",
+    activity: "Activity / Leaderboard",
+    ambassador: "Long-term Ambassador",
+    affiliate: "Affiliate / KOC",
+    launch: "Launch Coverage",
+    skip: "Skip - manual review",
+  }[value] ?? value;
+}
+
+function formatRoi(value) {
+  return `${value}x`;
+}
+
+function roiMultiplierLabel(value, collab) {
+  if (value === 0) return collab === "skip" ? "skip" : "-";
+  if (value < 0) return `${Math.round(value * 100)}%`;
+  return `${value.toFixed(value >= 10 ? 0 : 2).replace(/\.00$/, "")}x`;
+}
+
+function formatMonth(iso) {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return "-";
+  return date.toLocaleString("en-US", { month: "short", year: "numeric" });
+}
+
+function handleAgeYears(iso) {
+  const time = Date.parse(iso);
+  if (!time) return "-";
+  const years = (Date.now() - time) / (1000 * 60 * 60 * 24 * 365.25);
+  return `${years.toFixed(1)} yrs`;
+}
+
+function formatDateTime(iso) {
+  const date = new Date(iso);
+  if (Number.isNaN(date.getTime())) return iso;
+  return date.toLocaleString("en-US", {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  });
+}
+
 function moneyRange(low, high) {
   if (!low && !high) return "$0";
   return `$${low}-$${high}`;
@@ -799,6 +1556,16 @@ function dedupeFirst(values, count) {
 
 function escapeCell(value) {
   return String(value).replace(/\|/g, "\\|");
+}
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (char) => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;",
+  })[char]);
 }
 
 try {

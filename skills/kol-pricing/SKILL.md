@@ -1,6 +1,6 @@
 ---
 name: kol-pricing
-description: "Use this skill when pricing, ranking, or researching X/Twitter KOLs for a creator marketing campaign, especially when the user provides handles, asks for batch KOL analysis, wants outreach recommendations, or wants an agent-native version of the KOL Pricing framework. Prefer UnifAPI MCP tools for public X data, then run the deterministic pricing workflow before drafting outreach."
+description: "Use this skill when pricing, ranking, or researching X/Twitter KOLs for a creator marketing campaign, especially when the user provides handles, asks for batch KOL analysis, wants outreach recommendations, wants Markdown plus Tailwind HTML campaign reports, or wants an agent-native version of the KOL Pricing framework. Require product context before analysis, prefer UnifAPI MCP tools for public X data, then run the deterministic pricing workflow before drafting outreach."
 license: MIT
 metadata:
   author: UnifAPI
@@ -29,13 +29,18 @@ Attribution: this skill is adapted from [Antoniaiaiaiaia/kol-pricing](https://gi
 
 ## Workflow
 
-1. Gather campaign context.
-   - Product name, URL, pitch, desired action, estimated LTV.
+1. Resolve product context first.
+   - Treat the promoted product as required input before fetching KOL data or pricing a campaign.
+   - If the current conversation does not include product information, stop and ask for it. Accept a product/docs URL, pasted text, or a local/attached text/PDF/document file. A concise manual summary is also fine.
+   - Ask for only the missing essentials: product name, URL if available, value proposition, target customer, desired action, and estimated LTV if known. Do not proceed from handles alone.
+   - When the user provides a URL or file, extract product context from that source first, then ask a follow-up only for details still missing.
+
+2. Gather campaign constraints.
    - Target KOL tiers, excluded tiers, follower floor, engagement floor, extra keywords.
    - Handles to analyze, or a search query if discovery is needed.
-   - If the user does not provide context, ask for minimal campaign inputs. Do not assume the original app's local config files exist in this skills repository.
+   - Do not assume the original app's local config files exist in this skills repository.
 
-2. Fetch public X/Twitter data.
+3. Fetch public X/Twitter data.
    - Prefer the available UnifAPI MCP tools. Look for operations corresponding to:
      - `GET /x/users/by/username/{username}` for profile lookup by handle.
      - `GET /x/users/{id}/tweets` for recent authored posts after resolving the handle to `data.id`.
@@ -45,7 +50,7 @@ Attribution: this skill is adapted from [Antoniaiaiaiaia/kol-pricing](https://gi
    - Keep the returned `billing` metadata when available so final reports can mention actual record cost.
    - Do not call `api.x.com` directly unless the user explicitly asks for an official X implementation.
 
-3. Create a snapshot JSON for deterministic analysis.
+4. Create a snapshot JSON for deterministic analysis.
    - Use this shape:
 
 ```json
@@ -78,16 +83,17 @@ Attribution: this skill is adapted from [Antoniaiaiaiaia/kol-pricing](https://gi
 
    - The analyzer also accepts whole UnifAPI response envelopes as `profile_response` and `tweets_response`, which is useful when preserving `request_id`, `pagination`, and `billing` beside the normalized report.
 
-4. Run the offline pricing script when a reproducible artifact is useful.
+5. Run the offline pricing script when a reproducible artifact is useful. Generate Markdown, JSON, and Tailwind HTML artifacts from the same snapshot.
 
 ```bash
 node skills/kol-pricing/scripts/analyze-snapshot.mjs \
   --input /tmp/kol-pricing-input.json \
   --out /tmp/kol-pricing-report.md \
-  --json /tmp/kol-pricing-report.json
+  --json /tmp/kol-pricing-report.json \
+  --html /tmp/kol-pricing-report.html
 ```
 
-5. Draft outreach with the calling agent, not an external LLM key.
+6. Draft outreach with the calling agent, not an external LLM key.
    - Use `dm_brief` from the JSON report.
    - Reference exactly one recent tweet when possible.
    - Keep the tone practitioner, direct, and low-hype.
@@ -95,17 +101,21 @@ node skills/kol-pricing/scripts/analyze-snapshot.mjs \
 
 ## Output
 
+Always produce a text report in chat or Markdown and, when writing artifacts, also produce an HTML report styled with Tailwind. The HTML must use the same analysis results as the text report, avoid placeholder/mock data, and mirror the original app's result modules: profile header, warnings panel, tier verdict, collaboration matrix, top-pick ROI card, contract requirements, outreach brief, and audit trail. For batch reports, prepend a records-style ranked table and top actions before the per-KOL modules.
+
 For single-handle analysis, return:
 - Verdict: tier, top pick, cash range, ROI, risk level.
 - Evidence: matched keywords, engagement, profile fit, recent tweet signals.
 - Recommendation: contract terms and outreach brief.
 - Cost: UnifAPI records consumed or the best estimate if billing metadata is unavailable.
+- HTML report path when an artifact was generated.
 
 For batch analysis, return:
 - Ranked table.
 - Per-KOL mini reports.
 - Top 3 actions: engage, negotiate, skip.
 - Optional DM drafts for only the selected KOLs unless the user asks for all.
+- HTML report path when an artifact was generated.
 
 ## Pricing Logic
 
