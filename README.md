@@ -137,6 +137,11 @@ MCP is for live data access. The skills are for workflow guidance: what to ask, 
 
 Use an API key only when your MCP client cannot complete OAuth or explicitly asks for static headers.
 
+To get an API key:
+
+1. Go to [unifapi.com](https://unifapi.com/) and sign in.
+2. Create an API key from the dashboard, then keep it in your MCP client config or secret manager.
+
 ```json
 {
   "mcpServers": {
