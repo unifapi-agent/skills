@@ -5,7 +5,7 @@ license: MIT
 metadata:
   author: UnifAPI
   version: "1.0.0"
-  homepage: https://unifapi.com/agent-skills
+  homepage: https://unifapi.com/skills/kol-pricing
   source: https://github.com/unifapi-agent/skills
   original_source: https://github.com/Antoniaiaiaiaia/kol-pricing
   original_author: "Antonia (@antoniayly)"

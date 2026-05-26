@@ -5,7 +5,7 @@ license: MIT
 metadata:
   author: UnifAPI
   version: "1.0.0"
-  homepage: https://unifapi.com/agent-skills
+  homepage: https://unifapi.com/skills
   source: https://github.com/unifapi-agent/skills
   openclaw:
     links:
