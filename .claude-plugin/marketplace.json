@@ -1,7 +1,7 @@
 {
   "name": "unifapi-skills",
   "metadata": {
-    "description": "UnifAPI public-data skills for Claude Code"
+    "description": "UnifAPI public-data skills and OAuth MCP access for Claude Code"
   },
   "owner": {
     "name": "UnifAPI",
@@ -11,6 +11,7 @@
     {
       "name": "unifapi",
       "source": "./",
+      "description": "Use UnifAPI skills and hosted OAuth MCP for public-data research workflows.",
       "category": "developer-tools"
     }
   ]

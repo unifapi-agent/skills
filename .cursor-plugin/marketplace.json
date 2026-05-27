@@ -7,7 +7,9 @@
   "plugins": [
     {
       "name": "unifapi",
-      "source": "./"
+      "source": "./",
+      "description": "Use UnifAPI skills and hosted OAuth MCP for public-data research workflows.",
+      "category": "developer-tools"
     }
   ]
 }

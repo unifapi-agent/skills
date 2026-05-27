@@ -40,6 +40,14 @@ _Avoid_: Full app migration, repository mirror, source app
 The platform-specific metadata that lets an agent marketplace discover UnifAPI Skills. The first release ships Codex, Claude Code, and Cursor manifests.
 _Avoid_: Jekyll config, SEO metadata, app config
 
+**Plugin-First Distribution**:
+The preferred packaging model for non-developer users. Users install UnifAPI from a plugin or connector directory and complete OAuth, while `npx skills` stays a developer fallback.
+_Avoid_: CLI-first onboarding, raw skill install as primary CTA, pasted-token setup
+
+**Codex Plugin Bundle**:
+The installable Codex plugin directory under `plugins/unifapi`. It must contain `.codex-plugin/plugin.json`, `.mcp.json`, and the full `skills/` tree so Codex marketplace installation caches both MCP and Skills.
+_Avoid_: marketplace entry pointing at repo root, symlink-only bundle, missing MCP or skill files
+
 ## Example Dialogue
 
 Dev: "Should the KOL Pricing work stay in the old SEO repo?"
@@ -65,6 +73,14 @@ Domain expert: "No. Use MCP OAuth by default. Mention API keys only as a fallbac
 Dev: "Which plugin manifests should ship first?"
 
 Domain expert: "Ship all three Resend-style manifests for Codex, Claude Code, and Cursor."
+
+Dev: "Should non-developer users run `npx skills`?"
+
+Domain expert: "No. Non-developer users should install a plugin or connect the hosted MCP server through their AI app UI. Keep CLI commands as fallback documentation."
+
+Dev: "Can Codex marketplace point directly at the repo root?"
+
+Domain expert: "No. Use `plugins/unifapi` as the Codex marketplace bundle so installation includes `.codex-plugin`, `.mcp.json`, and the Skills tree."
 
 Dev: "Should KOL Pricing bring over the Vue/Hono app?"
 
