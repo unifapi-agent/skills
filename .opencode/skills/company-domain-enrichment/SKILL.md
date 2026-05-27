@@ -72,5 +72,6 @@ Also include runtime tools used, UnifAPI operations used, API gaps when relevant
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for supporting evidence and mark bulk enrichment as API backfill when needed.
+- Use `account-research-brief` when the user needs a narrative account brief rather than table fields.
+- Use `linkedin-people-enrichment` when people/profile enrichment matters more than company enrichment.
+- Use `gtm-table-enrichment` when this is one column in a larger table workflow.

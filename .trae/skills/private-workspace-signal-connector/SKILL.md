@@ -69,5 +69,6 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this skill waits on API backfill.
+- Use `account-signal-monitor` when public account signals are enough.
+- Use `news-pr-monitor` when the private workspace need is mainly a public-event monitor.
+- Use `crm-export-sequence` when the blocker is CRM handoff rather than private source access.

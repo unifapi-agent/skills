@@ -72,5 +72,6 @@ Also include runtime tools used, UnifAPI operations used, API gaps when relevant
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for demand context and mark price/SKU history as API backfill when needed.
+- Use `category-demand-scout` for market demand around the product category.
+- Use `reddit-voice-of-customer` for buyer complaints, objections, and comparison language.
+- Use `youtube-topic-monitor` when product demand is driven by video reviews or creator formats.

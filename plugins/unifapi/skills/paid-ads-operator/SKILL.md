@@ -69,5 +69,6 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this skill waits on API backfill.
+- Use `linkedin-ad-intel` for public LinkedIn ad-library research.
+- Use `campaign-reaction-analyst` when paid-message ideas need organic reaction evidence.
+- Use `competitor-gtm-monitor` for broader positioning and campaign context.

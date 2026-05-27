@@ -71,5 +71,6 @@ Also include runtime tools used, UnifAPI operations used, API gaps when relevant
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for supporting evidence when public web research needs social context.
+- Use `company-domain-enrichment` when the research output needs structured company fields.
+- Use `news-pr-monitor` for time-sensitive public events and announcements.
+- Use `web-page-change-monitor` when the task is comparing page versions.

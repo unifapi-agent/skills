@@ -71,5 +71,6 @@ Also include runtime tools used, UnifAPI operations used, API gaps when relevant
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills when Reddit, X Communities, or Threads are better public proxies.
+- Use `reddit-community-monitor` when subreddit evidence is the best public proxy.
+- Use `x-community-monitor` when the community is visible through public X Communities.
+- Use `threads-opportunity-monitor` when the discussion is happening on Threads.

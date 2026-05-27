@@ -72,5 +72,6 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills as the monitor sources and mark product alerting as API backfill when needed.
+- Use `account-signal-monitor` for account-specific trigger events.
+- Use `competitor-gtm-monitor` for recurring competitor digests.
+- Use `social-launch-monitor` for launch-specific watchlists.

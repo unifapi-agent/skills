@@ -72,5 +72,6 @@ Also include runtime tools used, UnifAPI operations used, API gaps when relevant
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for supporting launch/change context when page evidence needs market context.
+- Use `web-research-agent` for broader public-page research.
+- Use `competitor-gtm-monitor` when page changes should be interpreted as GTM movement.
+- Use `news-pr-monitor` when page changes need funding, launch, or PR context.

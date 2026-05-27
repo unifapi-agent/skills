@@ -70,5 +70,6 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this skill waits on API backfill.
+- Use `crypto-narrative-monitor` for off-chain narrative tracking.
+- Use `token-community-sentiment-pulse` for public social sentiment around a token or protocol.
+- Use `web3-launch-watch` for launch, airdrop, testnet, or NFT-drop monitoring.

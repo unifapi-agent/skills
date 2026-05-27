@@ -71,5 +71,4 @@ Also include runtime tools used, UnifAPI operations used, API gaps when relevant
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
 - Use `gtm-table-enrichment` when the input table needs research, normalization, or row-level enrichment first.

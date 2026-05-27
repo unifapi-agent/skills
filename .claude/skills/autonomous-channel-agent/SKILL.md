@@ -70,5 +70,6 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this skill waits on API backfill.
+- Use `cross-channel-content-brief` to draft channel-specific content ideas.
+- Use `reddit-opportunity-finder` or `x-social-listening` to find reply opportunities before publishing APIs exist.
+- Use `scheduled-signal-alerts` when the task is alerting rather than autonomous execution.

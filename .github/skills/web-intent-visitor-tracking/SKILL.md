@@ -70,5 +70,6 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this skill waits on API backfill.
+- Use `account-signal-monitor` for public account activity as an intent proxy.
+- Use `linkedin-hiring-signal-finder` for hiring-driven buying-intent clues.
+- Use `category-demand-scout` when the user needs market demand rather than first-party web intent.

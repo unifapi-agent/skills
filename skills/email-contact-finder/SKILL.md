@@ -72,5 +72,4 @@ Also include runtime tools used, UnifAPI operations used, API gaps when relevant
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
 - Use `gtm-table-enrichment` when contact readiness is part of a larger account or lead table.

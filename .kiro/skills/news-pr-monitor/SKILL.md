@@ -71,5 +71,6 @@ Also include runtime tools used, UnifAPI operations used, API gaps when relevant
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for social amplification and community reaction evidence.
+- Use `social-launch-monitor` for launch reaction tracking.
+- Use `competitor-gtm-monitor` when the news belongs in a competitor digest.
+- Use `web-page-change-monitor` when the trigger is a changed page, changelog, or docs update.

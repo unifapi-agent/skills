@@ -76,5 +76,4 @@ Also include runtime tools used, UnifAPI operations used, API gaps when relevant
 
 ## Related Skills
 
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
 - Use `technical-seo-repo-auditor` when the user wants codebase inspection or implementation of SEO fixes.

@@ -60,8 +60,3 @@ Also include operations used, query coverage, assumptions, confidence, and billi
 - If the competitor company slug is unknown, ask for a LinkedIn company URL before running the LinkedIn company operations.
 - Use public data only. OAuth authorizes the UnifAPI workspace and credit balance, not private upstream accounts.
 - If the user asks for data outside current UnifAPI coverage, record it as a coverage gap instead of pretending it is supported.
-
-## Related Skills
-
-- Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use `kol-pricing` only when the task is X/Twitter KOL pricing and the product context is known.
