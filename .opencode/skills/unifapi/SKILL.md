@@ -1,6 +1,6 @@
 ---
 name: unifapi
-description: "Use when working with UnifAPI public-data APIs or MCP: OAuth setup, operation discovery, public social/professional data calls, auth troubleshooting, and MCP OAuth vs API-key fallback. Use before asking for credentials."
+description: "Use when working with UnifAPI public-data APIs or MCP: OAuth setup, operation discovery, public social/professional data calls, auth troubleshooting, and API-key fallback."
 license: MIT
 metadata:
   author: UnifAPI

@@ -1,0 +1,4 @@
+interface:
+  display_name: "ICP Account List Builder"
+  short_description: "Build sourced target-account lists from ICP criteria."
+  default_prompt: "Use $icp-account-list-builder to discover and qualify target accounts for this ICP."

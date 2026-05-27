@@ -1,6 +1,6 @@
 ---
 name: web-intent-visitor-tracking
-description: "Use this API-backfill skill for Clay-style web intent, anonymous visitor identification, buying-intent scoring, account deanonymization, and website visitor alerts. Requires first-party tracking and enrichment APIs."
+description: "Use this API-backfill skill for Clay-style web intent, anonymous visitor identification, buying-intent scoring, account deanonymization, and website visitor alerts."
 license: MIT
 metadata:
   author: UnifAPI

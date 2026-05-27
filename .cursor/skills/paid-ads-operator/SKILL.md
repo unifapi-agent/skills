@@ -1,6 +1,6 @@
 ---
 name: paid-ads-operator
-description: "Use this API-backfill skill to inspect, launch, monitor, or optimize paid ads across Google, Meta, LinkedIn, TikTok, X, or other ad platforms. Today only public LinkedIn Ad Library observation is covered."
+description: "Use this API-backfill skill to inspect, launch, monitor, or optimize paid ads across Google, Meta, LinkedIn, TikTok, X, or other ad platforms."
 license: MIT
 metadata:
   author: UnifAPI

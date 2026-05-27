@@ -1,0 +1,4 @@
+interface:
+  display_name: "Founder Social Post Writer"
+  short_description: "Draft founder-led social posts from real signals and proof."
+  default_prompt: "Use $founder-social-post-writer to turn product context and public signals into approval-ready social post drafts."

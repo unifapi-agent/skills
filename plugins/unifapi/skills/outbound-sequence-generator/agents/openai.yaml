@@ -1,0 +1,4 @@
+interface:
+  display_name: "Outbound Sequence Generator"
+  short_description: "Write evidence-backed outbound sequences for review."
+  default_prompt: "Use $outbound-sequence-generator to draft a multi-step outreach sequence from target rows and public evidence."

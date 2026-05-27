@@ -1,6 +1,6 @@
 ---
 name: autonomous-channel-agent
-description: "Use this API-backfill skill for Okara-style agents that find opportunities, draft actions, route approvals, schedule, publish, reply, or follow up. Research works today; execution needs scheduling/publishing APIs."
+description: "Use this API-backfill skill for Okara-style agents that find opportunities, draft actions, route approvals, schedule, publish, reply, or follow up."
 license: MIT
 metadata:
   author: UnifAPI

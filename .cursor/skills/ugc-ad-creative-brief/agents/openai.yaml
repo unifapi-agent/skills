@@ -1,0 +1,4 @@
+interface:
+  display_name: "UGC Ad Creative Brief"
+  short_description: "Build UGC scripts, hooks, and creator briefs from evidence."
+  default_prompt: "Use $ugc-ad-creative-brief to create an approval-ready UGC or ad creative brief package."

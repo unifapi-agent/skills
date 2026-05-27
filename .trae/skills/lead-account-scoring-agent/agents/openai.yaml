@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lead Account Scoring Agent"
+  short_description: "Score leads or accounts with inspectable ICP evidence."
+  default_prompt: "Use $lead-account-scoring-agent to score this lead or account list against an explicit ICP."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Growth Analytics Brief"
+  short_description: "Analyze user-provided growth, SEO, and campaign exports."
+  default_prompt: "Use $growth-analytics-brief to turn analytics exports into prioritized growth actions and data-quality notes."

@@ -11,6 +11,7 @@
       "title": "GTM",
       "description": "Clay-style public GTM workflows for account research, lead discovery, enrichment, tables, competitors, and market maps.",
       "skills": [
+        "abm-signal-stack-scorer",
         "account-research-brief",
         "account-signal-monitor",
         "buyer-committee-mapper",
@@ -18,13 +19,17 @@
         "competitor-gtm-monitor",
         "competitor-talent-watch",
         "gtm-table-enrichment",
+        "icp-account-list-builder",
+        "lead-account-scoring-agent",
         "linkedin-ad-intel",
         "linkedin-founder-lead-list",
         "linkedin-hiring-signal-finder",
         "linkedin-people-enrichment",
         "market-map-from-social",
+        "outbound-sequence-generator",
         "outbound-personalization-brief",
-        "partner-prospect-finder"
+        "partner-prospect-finder",
+        "persona-classification-agent"
       ]
     },
     {
@@ -35,9 +40,11 @@
         "category-demand-scout",
         "cross-channel-competitor-monitor",
         "cross-channel-content-brief",
+        "founder-social-post-writer",
         "hacker-news-opportunity-monitor",
         "instagram-location-signal-monitor",
         "linkedin-company-content-monitor",
+        "product-growth-strategy-brief",
         "reddit-community-monitor",
         "reddit-opportunity-finder",
         "reddit-voice-of-customer",
@@ -55,9 +62,12 @@
       "description": "Web, SEO, news, page-change, marketplace, and ecommerce workflows that use host-agent search, fetch, shell, and code execution.",
       "skills": [
         "app-store-marketplace-monitor",
+        "backlink-mention-monitor",
         "ecommerce-product-monitor",
+        "growth-analytics-brief",
         "news-pr-monitor",
         "seo-aeo-monitor",
+        "seo-article-writer",
         "technical-seo-repo-auditor",
         "web-page-change-monitor",
         "web-research-agent"
@@ -71,6 +81,7 @@
         "instagram-creator-discovery",
         "kol-pricing",
         "multi-platform-creator-shortlist",
+        "ugc-ad-creative-brief",
         "youtube-creator-research"
       ]
     },

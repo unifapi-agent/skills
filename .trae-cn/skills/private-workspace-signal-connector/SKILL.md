@@ -1,6 +1,6 @@
 ---
 name: private-workspace-signal-connector
-description: "Use this API-backfill skill when workflows need private SaaS context from Slack, Notion, Drive, GitHub, Linear, Zendesk, Intercom, email, calendar, CRM, analytics, or product events. Requires private connectors."
+description: "Use this API-backfill skill when workflows need private SaaS context from Slack, Notion, Drive, GitHub, Linear, Zendesk, Intercom, email, calendar, CRM, analytics, or product events."
 license: MIT
 metadata:
   author: UnifAPI

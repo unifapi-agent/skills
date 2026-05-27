@@ -1,6 +1,6 @@
 ---
 name: company-domain-enrichment
-description: "Use this skill to enrich companies from domains or names with firmographics, category, tech stack, funding, headcount, locations, social handles, and LinkedIn identity using host search plus UnifAPI signals."
+description: "Use this skill to enrich companies from domains or names with firmographics, category, tech stack, funding, headcount, locations, social handles, and LinkedIn identity."
 license: MIT
 metadata:
   author: UnifAPI

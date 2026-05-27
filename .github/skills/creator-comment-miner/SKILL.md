@@ -1,6 +1,6 @@
 ---
 name: creator-comment-miner
-description: "Use this skill when mining public comments, replies, quotes, or reactions on creator posts for audience fit, objections, questions, sentiment, and campaign ideas. YouTube comments are a gap; use video metadata as context."
+description: "Use this skill when mining public comments, replies, quotes, or reactions on creator posts for audience fit, objections, questions, sentiment, and campaign ideas."
 license: MIT
 metadata:
   author: UnifAPI

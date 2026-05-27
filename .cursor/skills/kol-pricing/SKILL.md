@@ -1,6 +1,6 @@
 ---
 name: kol-pricing
-description: "Use when pricing, ranking, or researching X/Twitter KOLs for creator marketing: handle batches, campaign fit, outreach recs, and Markdown/Tailwind reports. Requires product context and deterministic UnifAPI-backed pricing."
+description: "Use when pricing, ranking, or researching X/Twitter KOLs for creator marketing: handle batches, campaign fit, outreach recs, and Markdown/Tailwind reports."
 license: MIT
 metadata:
   author: UnifAPI
