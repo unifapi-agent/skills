@@ -1,4 +1,4 @@
 interface:
   display_name: "News PR Monitor"
-  short_description: "Plan news and PR monitoring with social proxy signals until news/search APIs exist."
-  default_prompt: "Use $news-pr-monitor to scope news topics, run supported social proxy checks, and list required news/search API backfill."
+  short_description: "Research news and PR with host search/fetch plus social amplification."
+  default_prompt: "Use $news-pr-monitor to find cited news/PR evidence, separate social amplification, and note productized news API gaps."

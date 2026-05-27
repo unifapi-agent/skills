@@ -1,4 +1,4 @@
 interface:
   display_name: "Company Domain Enrichment"
-  short_description: "Plan domain-to-company enrichment while current coverage requires known LinkedIn identity."
-  default_prompt: "Use $company-domain-enrichment to define enrichment fields, use available LinkedIn evidence, and specify missing domain/company APIs."
+  short_description: "Enrich company domains with host search and UnifAPI public signals."
+  default_prompt: "Use $company-domain-enrichment to resolve domains with cited web evidence, enrich public signals, and note bulk enrichment API gaps."

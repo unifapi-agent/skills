@@ -9,13 +9,15 @@
     },
     {
       "title": "GTM",
-      "description": "Clay-style public GTM workflows for account research, lead discovery, enrichment, competitors, and market maps.",
+      "description": "Clay-style public GTM workflows for account research, lead discovery, enrichment, tables, competitors, and market maps.",
       "skills": [
         "account-research-brief",
         "account-signal-monitor",
         "buyer-committee-mapper",
+        "company-domain-enrichment",
         "competitor-gtm-monitor",
         "competitor-talent-watch",
+        "gtm-table-enrichment",
         "linkedin-ad-intel",
         "linkedin-founder-lead-list",
         "linkedin-hiring-signal-finder",
@@ -33,6 +35,7 @@
         "category-demand-scout",
         "cross-channel-competitor-monitor",
         "cross-channel-content-brief",
+        "hacker-news-opportunity-monitor",
         "instagram-location-signal-monitor",
         "linkedin-company-content-monitor",
         "reddit-community-monitor",
@@ -45,6 +48,19 @@
         "x-list-monitor",
         "x-social-listening",
         "youtube-topic-monitor"
+      ]
+    },
+    {
+      "title": "Agent-Native Web & SEO",
+      "description": "Web, SEO, news, page-change, marketplace, and ecommerce workflows that use host-agent search, fetch, shell, and code execution.",
+      "skills": [
+        "app-store-marketplace-monitor",
+        "ecommerce-product-monitor",
+        "news-pr-monitor",
+        "seo-aeo-monitor",
+        "technical-seo-repo-auditor",
+        "web-page-change-monitor",
+        "web-research-agent"
       ]
     },
     {
@@ -69,24 +85,17 @@
       ]
     },
     {
-      "title": "Planned Core",
-      "description": "High-demand Clay/Okara-style workflow surfaces created before every required API is ready; each skill marks current coverage and API backfill requirements.",
+      "title": "API Backfill",
+      "description": "High-demand Clay/Okara-style workflow surfaces that still need product APIs, private connectors, persistence, write actions, or source-specific data.",
       "skills": [
-        "app-store-marketplace-monitor",
         "autonomous-channel-agent",
-        "company-domain-enrichment",
         "crm-export-sequence",
         "discord-telegram-community-monitor",
-        "ecommerce-product-monitor",
         "email-contact-finder",
-        "news-pr-monitor",
         "paid-ads-operator",
         "private-workspace-signal-connector",
         "scheduled-signal-alerts",
-        "seo-aeo-monitor",
         "web-intent-visitor-tracking",
-        "web-page-change-monitor",
-        "web-research-agent",
         "web3-onchain-monitor"
       ]
     }

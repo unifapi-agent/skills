@@ -1,6 +1,6 @@
 # UnifAPI Skills
 
-UnifAPI Skills is the agent-skill distribution context for UnifAPI. It packages reusable skills that help coding agents use UnifAPI-powered public-data workflows.
+UnifAPI Skills is the agent-skill distribution context for UnifAPI. It packages reusable skills that help agents use UnifAPI-powered public-data workflows plus host-native search, fetch, shell, code, and file-editing capabilities.
 
 ## Language
 
@@ -33,8 +33,12 @@ A Skill that applies UnifAPI to a specific agent workflow or business scenario. 
 _Avoid_: Platform skill, example page, demo app
 
 **Workflow Portfolio**:
-The broad set of Workflow Skills that productize likely public-data use cases across GTM, growth, creator marketing, social listening, and web3 monitoring. The portfolio is not capped at a round number; it should cover high-probability scenarios that UnifAPI can support with current or near-term public-data operations.
+The broad set of Workflow Skills that productize likely public-data use cases across GTM, growth, creator marketing, social listening, web research, SEO, and web3 monitoring. The portfolio is not capped at a round number; it should cover high-probability scenarios that UnifAPI can support with current APIs, near-term public-data operations, or standard host-agent capabilities.
 _Avoid_: API endpoint catalog, fixed 20-skill quota, demo collection
+
+**Agent-Native Capability**:
+A capability provided by target runtimes such as ChatGPT, Codex, or Claude Code, including web search, URL fetch/browser fetch, shell, JS/TS/Python execution, local file reads/writes, and code edits. Skills may use these directly instead of requiring UnifAPI to wrap them first.
+_Avoid_: API gap, unsupported workflow, fake UnifAPI endpoint
 
 **GTM Data Workflow**:
 A Workflow Skill shaped around finding, enriching, scoring, monitoring, or personalizing public GTM signals. It uses Clay-like data steps but returns an agent-ready business artifact.
@@ -45,11 +49,11 @@ The opportunity brief, alert, draft, or action plan produced by a Workflow Skill
 _Avoid_: scheduled autopilot, CMS publisher, ad account operator
 
 **Coverage Gap**:
-A documented strong user need that UnifAPI Skills should acknowledge but cannot fully satisfy with the current UnifAPI public-data API surface. Coverage Gaps belong in a markdown planning artifact, not inside a Workflow Skill as if they were supported.
+A documented strong user need that UnifAPI Skills should acknowledge but cannot fully productize with the current UnifAPI public-data API surface and host-agent capabilities. Generic search/fetch/shell/code should not be treated as a UnifAPI Coverage Gap by itself; gaps are for scale, persistence, private connectors, write actions, normalized schemas, compliance metadata, or source-specific data that the runtime cannot provide.
 _Avoid_: hidden limitation, broken skill, unsupported promise
 
-**Planned Core Skill**:
-A Workflow Skill for a high-demand user job where the skill surface should exist before every required API is ready. Planned Core Skills must label current proxy coverage and API backfill requirements instead of pretending full execution is supported.
+**API Backfill Skill**:
+A Workflow Skill for a high-demand user job where the skill surface should exist before every productized API is ready. API Backfill Skills must label current coverage, agent-native execution paths when available, and API backfill requirements instead of pretending hosted execution is supported.
 _Avoid_: fake supported skill, endpoint wishlist only, hidden roadmap item
 
 **Skill Package**:
@@ -112,4 +116,4 @@ Domain expert: "No. Build a Workflow Portfolio: enough Workflow Skills to cover 
 
 Dev: "Should core demand like SEO, web research, CRM export, or on-chain monitors be omitted until APIs are ready?"
 
-Domain expert: "No. Create Planned Core Skills for the important jobs now, mark current coverage honestly, and list the API backfill required."
+Domain expert: "No. Create skills for the important jobs now. Use agent-native search, fetch, shell, and code when the runtime can execute the workflow, and list API backfill only for productized scale, persistence, connectors, write actions, and source-specific data."

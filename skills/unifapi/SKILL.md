@@ -50,7 +50,7 @@ OAuth authorizes the UnifAPI workspace and credit balance. It does not grant acc
 
 Read [references/public-data.md](references/public-data.md) when choosing whether UnifAPI is the right data path.
 
-For strong user needs that the current API does not fully cover, such as SEO, generic web search, scraping, news, email enrichment, CRM sync, publishing, paid ads, or on-chain web3 data, record the limitation using [../../docs/api-coverage-gaps.md](../../docs/api-coverage-gaps.md) instead of promising unsupported coverage.
+For strong user needs that the current API does not fully cover, first decide whether the host agent can use native search, fetch/browser, shell, code execution, or local file editing. Record a limitation in [../../docs/api-coverage-gaps.md](../../docs/api-coverage-gaps.md) when the workflow needs productized scale, persistence, private connectors, write actions, normalized schemas, or source-specific data that the host runtime cannot provide.
 
 ## Direct HTTP
 

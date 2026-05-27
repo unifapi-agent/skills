@@ -1,13 +1,13 @@
 ---
 name: web3-onchain-monitor
-description: "Use this planned skill for wallets, contracts, token holders, whales, DEX liquidity, NFT mints, governance, bridges, or protocol-risk monitoring. Current web3 skills cover social narratives only."
+description: "Use this API-backfill skill for wallets, contracts, token holders, whales, DEX liquidity, NFT mints, governance, bridges, or protocol-risk monitoring. Current web3 skills cover social narratives only."
 license: MIT
 metadata:
   author: UnifAPI
   version: "0.1.0"
   homepage: https://unifapi.com/skills/web3-onchain-monitor
   source: https://github.com/unifapi-agent/skills
-  category: "Future Core"
+  category: "API Backfill"
   api_status: planned
 ---
 
@@ -71,4 +71,4 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 ## Related Skills
 
 - Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this planned skill waits on API backfill.
+- Use current social/professional-platform skills for partial evidence while this skill waits on API backfill.

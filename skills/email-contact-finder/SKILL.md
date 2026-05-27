@@ -1,14 +1,15 @@
 ---
 name: email-contact-finder
-description: "Use this planned skill for verified work emails, role emails, phone numbers, public contact paths, and outbound contact readiness. Current coverage is public LinkedIn contact blocks; full execution needs finder/verifier APIs."
+description: "Use this skill for public contact paths, contact-readiness checks, and planned verified work email/phone enrichment. Host search can find public paths; verification needs APIs."
 license: MIT
 metadata:
   author: UnifAPI
   version: "0.1.0"
   homepage: https://unifapi.com/skills/email-contact-finder
   source: https://github.com/unifapi-agent/skills
-  category: "Future Core"
-  api_status: planned
+  category: GTM
+  api_status: api_backfill
+  runtime_status: agent_native
 ---
 
 # Email Contact Finder
@@ -24,11 +25,12 @@ Find compliant contact paths for qualified leads and explain confidence, source,
 - Compliance constraints and geography
 - Verification threshold
 
-If the user asks for full execution before the required APIs exist, state the gap clearly, run only the current proxy workflow when useful, and return the API Backfill Required section as implementation guidance.
+Use host search/fetch for public contact paths and UnifAPI public profile evidence when available. State an API gap when the user needs verified work emails, phone enrichment, deliverability checks, suppression lists, or bulk contact waterfalls.
 
-## Current Coverage
+## Agent Runtime Coverage
 
 - Use LinkedIn public contact blocks only when the API returns them.
+- Use host search/fetch for public contact, about, team, press, careers, docs, GitHub, and social profile pages.
 - Recommend public social/profile outreach when email is unavailable.
 - Use existing lead/person enrichment skills for qualification before contact discovery.
 
@@ -44,7 +46,7 @@ If the user asks for full execution before the required APIs exist, state the ga
 ## Workflow
 
 1. Qualify the lead first so contact discovery is not spam-ready bulk output.
-2. Search public contact paths and verify deliverability when APIs exist.
+2. Search public contact paths with host search/fetch and verify deliverability when APIs exist.
 3. Attach source, confidence, and compliance notes to every contact.
 4. Return safe next-step recommendations.
 
@@ -58,7 +60,7 @@ Return a decision-ready artifact, not a raw API dump. Include:
 - Compliance flags
 - Recommended outreach channel
 
-Also include current coverage used, API gaps, assumptions, confidence, and billing metadata when available.
+Also include runtime tools used, UnifAPI operations used, API gaps when relevant, assumptions, confidence, and billing metadata when available.
 
 ## Guardrails
 
@@ -71,4 +73,4 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 ## Related Skills
 
 - Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this planned skill waits on API backfill.
+- Use `gtm-table-enrichment` when contact readiness is part of a larger account or lead table.

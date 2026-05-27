@@ -1,13 +1,13 @@
 ---
 name: private-workspace-signal-connector
-description: "Use this planned skill when workflows need private SaaS context from Slack, Notion, Drive, GitHub, Linear, Zendesk, Intercom, email, calendar, CRM, analytics, or product events. Requires private connectors."
+description: "Use this API-backfill skill when workflows need private SaaS context from Slack, Notion, Drive, GitHub, Linear, Zendesk, Intercom, email, calendar, CRM, analytics, or product events. Requires private connectors."
 license: MIT
 metadata:
   author: UnifAPI
   version: "0.1.0"
   homepage: https://unifapi.com/skills/private-workspace-signal-connector
   source: https://github.com/unifapi-agent/skills
-  category: "Future Core"
+  category: "API Backfill"
   api_status: planned
 ---
 
@@ -70,4 +70,4 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 ## Related Skills
 
 - Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this planned skill waits on API backfill.
+- Use current social/professional-platform skills for partial evidence while this skill waits on API backfill.

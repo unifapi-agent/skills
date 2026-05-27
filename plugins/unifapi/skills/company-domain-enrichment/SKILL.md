@@ -1,14 +1,15 @@
 ---
 name: company-domain-enrichment
-description: "Use this planned skill to enrich companies from domains or names with firmographics, category, tech stack, funding, headcount, locations, social handles, and LinkedIn identity. Requires domain/company enrichment APIs."
+description: "Use this skill to enrich companies from domains or names with firmographics, category, tech stack, funding, headcount, locations, social handles, and LinkedIn identity using host search plus UnifAPI signals."
 license: MIT
 metadata:
   author: UnifAPI
   version: "0.1.0"
   homepage: https://unifapi.com/skills/company-domain-enrichment
   source: https://github.com/unifapi-agent/skills
-  category: "Future Core"
-  api_status: planned
+  category: GTM
+  api_status: api_backfill
+  runtime_status: agent_native
 ---
 
 # Company Domain Enrichment
@@ -24,13 +25,14 @@ Turn a domain or company list into a normalized account table for GTM research, 
 - ICP/scoring criteria
 - Output format or destination
 
-If the user asks for full execution before the required APIs exist, state the gap clearly, run only the current proxy workflow when useful, and return the API Backfill Required section as implementation guidance.
+Use host search/fetch for small-batch public domain resolution and use UnifAPI LinkedIn/social evidence when identifiers are known. State an API gap when the user needs bulk normalized enrichment, proprietary firmographics, provider waterfalls, or guaranteed field coverage.
 
-## Current Coverage
+## Agent Runtime Coverage
 
 - If a LinkedIn slug is known, use LinkedIn company profile, posts, jobs, member insights, and people operations.
-- If only a domain is known, ask for the LinkedIn company URL or mark domain resolution as unavailable.
-- Use social search only as low-confidence supporting context.
+- If only a domain is known, use host search/fetch to identify the official company, LinkedIn URL, social handles, and source pages for small batches.
+- Use social search as supporting context, with confidence per field.
+- For large lists, normalize input/output files with JS/TS or Python before enrichment.
 
 ## API Backfill Required
 
@@ -44,7 +46,7 @@ If the user asks for full execution before the required APIs exist, state the ga
 ## Workflow
 
 1. Normalize input domains/names and identify missing identifiers.
-2. Resolve domains to canonical companies when APIs exist.
+2. Resolve domains to canonical companies with host search/fetch for small batches or APIs when available.
 3. Enrich account fields and score against the ICP.
 4. Return a table with source confidence and unresolved rows.
 
@@ -58,11 +60,11 @@ Return a decision-ready artifact, not a raw API dump. Include:
 - Missing field report
 - Suggested next enrichment APIs
 
-Also include current coverage used, API gaps, assumptions, confidence, and billing metadata when available.
+Also include runtime tools used, UnifAPI operations used, API gaps when relevant, assumptions, confidence, and billing metadata when available.
 
 ## Guardrails
 
-- Do not infer company identity from a domain without a resolution source.
+- Do not infer company identity from a domain without a cited resolution source.
 - Keep confidence per enriched field.
 - Do not invent firmographics from social posts.
 - Use public data only unless a future connector explicitly authorizes private sources.
@@ -71,4 +73,4 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 ## Related Skills
 
 - Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this planned skill waits on API backfill.
+- Use current social/professional-platform skills for supporting evidence and mark bulk enrichment as API backfill when needed.

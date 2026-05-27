@@ -1,7 +1,7 @@
 {
   "name": "unifapi",
   "displayName": "UnifAPI",
-  "description": "Plugin with UnifAPI public-data skills, planned API-backfill workflows, and the hosted OAuth MCP server for GTM, growth, creator, and web3 monitoring.",
+  "description": "Plugin with UnifAPI public-data skills, agent-native web/SEO workflows, API-backfill workflows, and the hosted OAuth MCP server for GTM, growth, creator, and web3 monitoring.",
   "version": "1.0.0",
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",

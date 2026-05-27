@@ -1,14 +1,15 @@
 ---
 name: ecommerce-product-monitor
-description: "Use this planned skill to track ecommerce products, SKUs, prices, reviews, availability, bundles, affiliate catalogs, and marketplace listings. Current APIs observe social content; full execution needs product APIs."
+description: "Use this skill to track ecommerce products, SKUs, prices, reviews, availability, bundles, affiliate catalogs, and marketplace listings using host search/fetch plus UnifAPI social demand signals."
 license: MIT
 metadata:
   author: UnifAPI
   version: "0.1.0"
   homepage: https://unifapi.com/skills/ecommerce-product-monitor
   source: https://github.com/unifapi-agent/skills
-  category: "Future Core"
-  api_status: planned
+  category: Growth
+  api_status: api_backfill
+  runtime_status: agent_native
 ---
 
 # Ecommerce Product Monitor
@@ -24,13 +25,14 @@ Monitor public product and marketplace movement for ecommerce growth, affiliate 
 - Competitors and regions
 - Monitoring cadence
 
-If the user asks for full execution before the required APIs exist, state the gap clearly, run only the current proxy workflow when useful, and return the API Backfill Required section as implementation guidance.
+Use host search/fetch for one-off public product page checks and use UnifAPI social/video evidence for demand and creator context. State an API gap when the user needs price history, stock monitoring, SKU matching at scale, affiliate feeds, or normalized marketplace schemas.
 
-## Current Coverage
+## Agent Runtime Coverage
 
+- Fetch public product, review, price, and marketplace listing pages when accessible through the host runtime.
 - Use Instagram, TikTok, YouTube, Reddit, and X social content around products as demand and creator proxies.
 - Use `instagram-location-signal-monitor`, `tiktok-trend-radar`, and `youtube-topic-monitor` for partial social evidence.
-- Do not claim price, stock, review, or SKU coverage without ecommerce APIs.
+- Do not claim durable price, stock, review, or SKU history without ecommerce APIs.
 
 ## API Backfill Required
 
@@ -58,7 +60,7 @@ Return a decision-ready artifact, not a raw API dump. Include:
 - Affiliate or creator opportunities
 - Coverage gaps
 
-Also include current coverage used, API gaps, assumptions, confidence, and billing metadata when available.
+Also include runtime tools used, UnifAPI operations used, API gaps when relevant, assumptions, confidence, and billing metadata when available.
 
 ## Guardrails
 
@@ -71,4 +73,4 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 ## Related Skills
 
 - Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this planned skill waits on API backfill.
+- Use current social/professional-platform skills for demand context and mark price/SKU history as API backfill when needed.

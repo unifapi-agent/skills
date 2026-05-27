@@ -1,14 +1,15 @@
 ---
 name: discord-telegram-community-monitor
-description: "Use this planned skill to monitor Discord, Telegram, Discourse, GitHub Discussions, or other communities for growth, support, web3, and product signals. Current coverage uses Reddit, X Communities, and Threads."
+description: "Use this skill to monitor public/exported Discord, Telegram, Discourse, GitHub Discussions, or other communities for growth, support, web3, and product signals; private monitoring needs connectors."
 license: MIT
 metadata:
   author: UnifAPI
   version: "0.1.0"
   homepage: https://unifapi.com/skills/discord-telegram-community-monitor
   source: https://github.com/unifapi-agent/skills
-  category: "Future Core"
-  api_status: planned
+  category: Growth
+  api_status: api_backfill
+  runtime_status: agent_native
 ---
 
 # Discord Telegram Community Monitor
@@ -24,13 +25,14 @@ Track community questions, sentiment, incidents, launches, support pain, and inf
 - Topics and signal categories
 - Cadence and alert thresholds
 
-If the user asks for full execution before the required APIs exist, state the gap clearly, run only the current proxy workflow when useful, and return the API Backfill Required section as implementation guidance.
+Use host search/fetch for public community pages and user-provided exports when available. State an API gap when the user needs private Discord/Telegram access, durable monitoring, member metadata, or notification delivery.
 
-## Current Coverage
+## Agent Runtime Coverage
 
 - Use Reddit, X Communities, Threads, and public social platforms as partial community proxies.
-- Ask users to provide exported text or public URLs when connectors are unavailable.
-- Do not claim Discord/Telegram coverage without connectors.
+- Use host fetch/search for public Telegram channels, Discourse forums, GitHub Discussions/issues, and public community archives when accessible.
+- Use user-provided exports or pasted text when connectors are unavailable.
+- Do not claim private Discord/Telegram coverage without connectors.
 
 ## API Backfill Required
 
@@ -43,7 +45,7 @@ If the user asks for full execution before the required APIs exist, state the ga
 ## Workflow
 
 1. Define community boundaries and permissions.
-2. Collect messages/threads through allowed connectors when available.
+2. Collect messages/threads through public pages, user exports, or allowed connectors when available.
 3. Cluster questions, incidents, feature requests, sentiment, and influential voices.
 4. Return a digest and action queue for support, growth, or community teams.
 
@@ -57,7 +59,7 @@ Return a decision-ready artifact, not a raw API dump. Include:
 - Recommended responses
 - Permission and coverage caveats
 
-Also include current coverage used, API gaps, assumptions, confidence, and billing metadata when available.
+Also include runtime tools used, UnifAPI operations used, API gaps when relevant, assumptions, confidence, and billing metadata when available.
 
 ## Guardrails
 
@@ -70,4 +72,4 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 ## Related Skills
 
 - Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this planned skill waits on API backfill.
+- Use current social/professional-platform skills when Reddit, X Communities, or Threads are better public proxies.

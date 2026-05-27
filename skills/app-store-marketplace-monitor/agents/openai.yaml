@@ -1,4 +1,4 @@
 interface:
   display_name: "App Store Marketplace Monitor"
-  short_description: "Plan app-store and marketplace monitoring with social/video proxies until store APIs exist."
-  default_prompt: "Use $app-store-marketplace-monitor to define marketplaces, review/rating signals, proxy checks, and required marketplace APIs."
+  short_description: "Inspect public marketplace listings and demand signals."
+  default_prompt: "Use $app-store-marketplace-monitor to fetch public listings/reviews, add social/video demand context, and note marketplace API gaps."

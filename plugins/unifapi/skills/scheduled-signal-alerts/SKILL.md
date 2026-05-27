@@ -1,14 +1,15 @@
 ---
 name: scheduled-signal-alerts
-description: "Use this planned skill when a monitor should run daily, weekly, or on thresholds and notify Slack, email, webhook, or CRM. Current skills define queries only; full execution requires schedules, diffs, storage, and notifications."
+description: "Use this skill when a monitor should run daily, weekly, or on thresholds and notify Slack, email, webhook, or CRM. Host scheduling may handle simple follow-ups; product alerts need APIs."
 license: MIT
 metadata:
   author: UnifAPI
   version: "0.1.0"
   homepage: https://unifapi.com/skills/scheduled-signal-alerts
   source: https://github.com/unifapi-agent/skills
-  category: "Future Core"
-  api_status: planned
+  category: Growth
+  api_status: api_backfill
+  runtime_status: host_scheduling_optional
 ---
 
 # Scheduled Signal Alerts
@@ -24,13 +25,14 @@ Turn one-off signal workflows into durable monitors with cadence, thresholds, di
 - Notification destination
 - Escalation and suppression criteria
 
-If the user asks for full execution before the required APIs exist, state the gap clearly, run only the current proxy workflow when useful, and return the API Backfill Required section as implementation guidance.
+If the host agent supports reminders, automations, or recurring jobs, use that host-native mechanism for simple follow-ups when appropriate. State an API gap when the user needs cross-agent persistence, shared alert history, diff storage, webhook/CRM delivery, or product-owned monitor infrastructure.
 
 ## Current Coverage
 
 - Define the monitor plan, queries, scoring rubric, and expected output.
 - Use existing monitor skills such as `account-signal-monitor`, `competitor-gtm-monitor`, `x-social-listening`, and `crypto-narrative-monitor` as sources.
-- Do not claim persistence or notification delivery without monitor infrastructure.
+- Use host-native scheduling only when the runtime provides it and the user wants that local/thread-level behavior.
+- Do not claim UnifAPI-owned persistence or notification delivery without monitor infrastructure.
 
 ## API Backfill Required
 
@@ -71,4 +73,4 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 ## Related Skills
 
 - Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this planned skill waits on API backfill.
+- Use current social/professional-platform skills as the monitor sources and mark product alerting as API backfill when needed.

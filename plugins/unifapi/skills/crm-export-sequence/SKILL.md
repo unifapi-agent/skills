@@ -1,14 +1,15 @@
 ---
 name: crm-export-sequence
-description: "Use this planned skill for Clay-like handoff from research/enrichment into CRM fields, outbound sequences, Slack alerts, or sales engagement. Produces tables/drafts today; full execution requires CRM/export/write APIs."
+description: "Use this skill for Clay-like handoff from research/enrichment into CRM-ready fields, outbound sequences, Slack alerts, or sales engagement using agent-generated tables and planned connector APIs."
 license: MIT
 metadata:
   author: UnifAPI
   version: "0.1.0"
   homepage: https://unifapi.com/skills/crm-export-sequence
   source: https://github.com/unifapi-agent/skills
-  category: "Future Core"
-  api_status: planned
+  category: GTM
+  api_status: api_backfill
+  runtime_status: agent_native
 ---
 
 # CRM Export Sequence
@@ -24,12 +25,13 @@ Convert qualified research outputs into CRM-ready records, dedupe decisions, fie
 - Field mapping and ownership rules
 - Sequence goal and compliance constraints
 
-If the user asks for full execution before the required APIs exist, state the gap clearly, run only the current proxy workflow when useful, and return the API Backfill Required section as implementation guidance.
+Use host code/file tools to produce CRM-ready CSV/JSON/Markdown tables and sequence drafts. State an API gap only when the user needs confirmed CRM writes, sales-engagement enrollment, Slack/webhook delivery, rollback, or sync status.
 
-## Current Coverage
+## Agent Runtime Coverage
 
-- Produce Markdown/CSV-style tables and sequence briefs for manual import.
-- Use `outbound-personalization-brief`, `linkedin-founder-lead-list`, and `account-research-brief` as inputs.
+- Produce Markdown/CSV/JSON-style tables and sequence briefs for manual import.
+- Use `gtm-table-enrichment`, `outbound-personalization-brief`, `linkedin-founder-lead-list`, and `account-research-brief` as inputs.
+- Use JS/TS or Python to normalize field names, dedupe rows, validate required columns, and format exports.
 - Do not write to private SaaS systems without connectors.
 
 ## API Backfill Required
@@ -43,7 +45,7 @@ If the user asks for full execution before the required APIs exist, state the ga
 ## Workflow
 
 1. Validate that the input list is qualified and source-backed.
-2. Map fields and dedupe keys before export.
+2. Map fields and dedupe keys before export, creating a local table/file when useful.
 3. When connectors exist, create/update records and attach source evidence.
 4. Generate sequence recommendations and handoff summary.
 
@@ -57,7 +59,7 @@ Return a decision-ready artifact, not a raw API dump. Include:
 - Sequence recommendation
 - Export/write audit summary
 
-Also include current coverage used, API gaps, assumptions, confidence, and billing metadata when available.
+Also include runtime tools used, UnifAPI operations used, API gaps when relevant, assumptions, confidence, and billing metadata when available.
 
 ## Guardrails
 
@@ -70,4 +72,4 @@ Also include current coverage used, API gaps, assumptions, confidence, and billi
 ## Related Skills
 
 - Use `unifapi` for MCP setup, operation discovery, auth fallback, and public-data boundaries.
-- Use current social/professional-platform skills for partial evidence while this planned skill waits on API backfill.
+- Use `gtm-table-enrichment` when the input table needs research, normalization, or row-level enrichment first.

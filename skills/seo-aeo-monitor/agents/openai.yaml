@@ -1,4 +1,4 @@
 interface:
   display_name: "SEO AEO Monitor"
-  short_description: "Plan SEO/AEO monitoring, using social demand proxies until search and crawl APIs exist."
-  default_prompt: "Use $seo-aeo-monitor to scope SEO/AEO visibility, run supported proxy research, and list the API backfill needed for full execution."
+  short_description: "Run agent-native SEO/AEO checks and separate tracked API gaps."
+  default_prompt: "Use $seo-aeo-monitor to inspect pages or repo evidence, gather demand/search signals, and note rank/AEO API backfill needs."

@@ -1,4 +1,4 @@
 interface:
   display_name: "Web Research Agent"
-  short_description: "Plan sourced web research across public pages, with current social/professional proxies."
-  default_prompt: "Use $web-research-agent to build a sourced research plan, run available proxy discovery, and identify web search/page extraction API gaps."
+  short_description: "Research public pages with host search/fetch and UnifAPI social evidence."
+  default_prompt: "Use $web-research-agent to gather cited web evidence with host search/fetch, add UnifAPI signals when useful, and note productized API gaps."

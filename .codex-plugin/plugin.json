@@ -1,6 +1,6 @@
 {
   "name": "unifapi",
-  "description": "Plugin with UnifAPI public-data skills, planned API-backfill workflows, and the hosted OAuth MCP server for GTM, growth, creator, and web3 monitoring.",
+  "description": "Plugin with UnifAPI public-data skills, agent-native web/SEO workflows, API-backfill workflows, and the hosted OAuth MCP server for GTM, growth, creator, and web3 monitoring.",
   "version": "1.0.0",
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
@@ -15,8 +15,8 @@
   "keywords": ["unifapi", "mcp", "public-data", "agents", "social-data", "gtm", "growth", "web3"],
   "interface": {
     "displayName": "UnifAPI",
-    "shortDescription": "Public-data GTM skills through OAuth MCP",
-    "longDescription": "UnifAPI gives agents reusable skills and OAuth MCP access for public social and professional-platform workflows: GTM account research, growth monitoring, creator discovery, social listening, and web3 narrative tracking. It also includes Planned Core skills for high-demand workflows whose APIs are still being backfilled, so agents can expose current coverage and implementation requirements instead of over-promising. Install the plugin, sign in with UnifAPI when prompted, then ask Codex for ranked tables, creator briefs, market scans, or evidence-backed public-data reports.",
+    "shortDescription": "Public-data GTM skills plus agent-native web workflows",
+    "longDescription": "UnifAPI gives agents reusable skills and OAuth MCP access for public social and professional-platform workflows: GTM account research, growth monitoring, creator discovery, social listening, and web3 narrative tracking. It also includes agent-native web, SEO, HN, marketplace, ecommerce, and table-enrichment skills that can use the host agent's search, fetch, shell, and code execution directly, plus API-backfill skills for workflows that need productized scale, private connectors, persistence, or write actions. Install the plugin, sign in with UnifAPI when prompted, then ask Codex for ranked tables, creator briefs, market scans, or evidence-backed public-data reports.",
     "developerName": "UnifAPI",
     "category": "Developer Tools",
     "capabilities": ["Read", "Interactive"],

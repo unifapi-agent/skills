@@ -1,4 +1,4 @@
 interface:
   display_name: "Discord Telegram Community Monitor"
-  short_description: "Plan community monitoring beyond Reddit/X/Threads before Discord and Telegram connectors exist."
-  default_prompt: "Use $discord-telegram-community-monitor to define communities, proxy sources, signal taxonomy, and connector API backfill."
+  short_description: "Monitor public/exported communities and define connector gaps."
+  default_prompt: "Use $discord-telegram-community-monitor to inspect public or exported community messages, summarize signals, and note private connector gaps."

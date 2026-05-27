@@ -1,4 +1,4 @@
 interface:
   display_name: "Web Page Change Monitor"
-  short_description: "Plan public page change monitoring before crawl, snapshot, diff, and alert APIs exist."
-  default_prompt: "Use $web-page-change-monitor to define target pages, expected diffs, proxy evidence, and the crawl/diff APIs required."
+  short_description: "Compare public pages now and define durable crawl/diff API needs."
+  default_prompt: "Use $web-page-change-monitor to fetch or compare public pages, summarize meaningful changes, and note durable crawl/diff API gaps."
