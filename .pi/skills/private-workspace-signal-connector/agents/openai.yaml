@@ -1,0 +1,4 @@
+interface:
+  display_name: "Private Workspace Signal Connector"
+  short_description: "Plan private workspace signal connectors with explicit OAuth scope and audit requirements."
+  default_prompt: "Use $private-workspace-signal-connector to define private sources, permissions, current gaps, and connector requirements."

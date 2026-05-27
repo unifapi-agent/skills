@@ -1,0 +1,4 @@
+interface:
+  display_name: "YouTube Topic Monitor"
+  short_description: "Create a periodic YouTube digest of videos, channels, questions, formats, and conte..."
+  default_prompt: "Use $youtube-topic-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

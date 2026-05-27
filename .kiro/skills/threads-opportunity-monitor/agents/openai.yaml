@@ -1,0 +1,4 @@
+interface:
+  display_name: "Threads Opportunity Monitor"
+  short_description: "Find Threads conversations and accounts worth following, replying to, or using for ..."
+  default_prompt: "Use $threads-opportunity-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

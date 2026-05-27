@@ -1,0 +1,4 @@
+interface:
+  display_name: "Crypto Narrative Monitor"
+  short_description: "Track emerging crypto narratives, token/project mentions, ecosystem debates, and in..."
+  default_prompt: "Use $crypto-narrative-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

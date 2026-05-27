@@ -3,7 +3,11 @@
 package-lock.json
 
 # agent clients
-.claude
+.claude/*
+!.claude/skills/
+!.claude/skills/**
+!.claude/docs/
+!.claude/docs/**
 
 # eval workspaces and generated scratch output
 *-workspace/

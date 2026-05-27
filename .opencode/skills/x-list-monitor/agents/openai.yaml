@@ -1,0 +1,4 @@
+interface:
+  display_name: "X List Monitor"
+  short_description: "Turn an X List into a repeatable monitor for market narratives, influential posts, ..."
+  default_prompt: "Use $x-list-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

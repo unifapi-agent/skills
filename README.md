@@ -30,7 +30,8 @@ For step-by-step instructions, see [Non-Developer Usage](./docs/non-developer-us
 - Agent-native web/SEO/table skills - high-demand web research, HN monitoring, technical SEO, page diffs, news/PR, marketplace, ecommerce, and table enrichment workflows that can use the host agent's search, fetch, shell, and code execution.
 - API-backfill skills - high-demand CRM/export, contact discovery, scheduling, publishing, ads, on-chain, community, web intent, and private-workspace workflows with explicit product/API backfill requirements.
 - `.mcp.json` - hosted MCP server configuration for `https://mcp.unifapi.com`.
-- `plugins/unifapi` - Codex marketplace bundle containing `.codex-plugin/`, `.mcp.json`, and the skills.
+- `plugins/unifapi` - generated Codex marketplace bundle containing `.codex-plugin/`, `.mcp.json`, docs, and the skills.
+- Generated provider-native skill trees under `.agents/skills`, `.claude/skills`, `.cursor/skills`, `.gemini/skills`, `.github/skills`, `.kiro/skills`, `.opencode/skills`, `.pi/skills`, `.qoder/skills`, `.trae*/skills`, and `.rovodev/skills`.
 - `.codex-plugin/`, `.claude-plugin/`, and `.cursor-plugin/` manifests for platform-specific plugin distribution.
 
 ## Install as a Plugin
@@ -246,6 +247,11 @@ For lower-level OAuth fields, troubleshooting, billing behavior, and direct HTTP
 .codex-plugin/plugin.json      OpenAI Codex plugin manifest
 .agents/plugins/marketplace.json  Codex repo marketplace metadata
 plugins/unifapi/               Codex installable plugin bundle
+.agents/skills/                Codex repo/user skill tree
+.claude/skills/                Claude Code skill tree
+.cursor/skills/                Cursor skill tree
+.gemini/skills/                Gemini CLI skill tree
+.github/skills/                GitHub Copilot skill tree
 .claude-plugin/plugin.json     Claude Code plugin manifest
 .claude-plugin/marketplace.json   Claude Code marketplace metadata
 .cursor-plugin/plugin.json     Cursor plugin metadata

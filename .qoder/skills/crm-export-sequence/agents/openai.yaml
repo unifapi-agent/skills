@@ -1,0 +1,4 @@
+interface:
+  display_name: "CRM Export Sequence"
+  short_description: "Prepare CRM-ready tables and sequence handoff specs."
+  default_prompt: "Use $crm-export-sequence to map fields, dedupe rows, create manual export tables, draft sequences, and note CRM/write API gaps."

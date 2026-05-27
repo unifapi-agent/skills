@@ -1,0 +1,4 @@
+interface:
+  display_name: "LinkedIn Ad Intel"
+  short_description: "Summarize what an account or competitor is actively testing in paid LinkedIn messag..."
+  default_prompt: "Use $linkedin-ad-intel to gather public evidence through UnifAPI and return a decision-ready brief."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Account Research Brief"
+  short_description: "Turn a target company, product, or competitor into a concise account brief with pub..."
+  default_prompt: "Use $account-research-brief to gather public evidence through UnifAPI and return a decision-ready brief."

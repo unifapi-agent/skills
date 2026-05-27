@@ -69,8 +69,12 @@ The preferred packaging model for non-developer users. Users install UnifAPI fro
 _Avoid_: CLI-first onboarding, raw skill install as primary CTA, pasted-token setup
 
 **Codex Plugin Bundle**:
-The installable Codex plugin directory under `plugins/unifapi`. It must contain `.codex-plugin/plugin.json`, `.mcp.json`, and the full `skills/` tree so Codex marketplace installation caches both MCP and Skills.
-_Avoid_: marketplace entry pointing at repo root, symlink-only bundle, missing MCP or skill files
+The generated installable Codex plugin directory under `plugins/unifapi`. It must contain `.codex-plugin/plugin.json`, `.mcp.json`, linked docs, and the full `skills/` tree so Codex marketplace installation caches both MCP and Skills. The root repo remains the source of truth; regenerate the bundle with `scripts/sync-plugin-bundle.mjs`.
+_Avoid_: hand-edited bundle, marketplace entry pointing at repo root, symlink-only bundle, missing MCP or skill files
+
+**Provider-Native Skill Tree**:
+Generated copies of the canonical root `skills/` tree under platform-native locations such as `.agents/skills`, `.claude/skills`, `.cursor/skills`, `.gemini/skills`, `.github/skills`, `.kiro/skills`, `.opencode/skills`, `.pi/skills`, `.qoder/skills`, `.trae*/skills`, and `.rovodev/skills`. These exist for agent clients that discover skills from provider-specific directories. Edit root `skills/` and regenerate; do not hand-edit provider copies.
+_Avoid_: platform fork, manual duplicate, divergent skill definition
 
 ## Example Dialogue
 

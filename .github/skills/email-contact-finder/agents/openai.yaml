@@ -1,0 +1,4 @@
+interface:
+  display_name: "Email Contact Finder"
+  short_description: "Find public contact paths and note verification API gaps."
+  default_prompt: "Use $email-contact-finder to find public contact paths, assess outreach readiness, and note email/phone verification API gaps."

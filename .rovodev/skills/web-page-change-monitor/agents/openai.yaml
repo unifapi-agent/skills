@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web Page Change Monitor"
+  short_description: "Compare public pages now and define durable crawl/diff API needs."
+  default_prompt: "Use $web-page-change-monitor to fetch or compare public pages, summarize meaningful changes, and note durable crawl/diff API gaps."

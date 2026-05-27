@@ -1,0 +1,4 @@
+interface:
+  display_name: "LinkedIn Company Content Monitor"
+  short_description: "Convert company-page posting activity into a channel-agent style digest with themes..."
+  default_prompt: "Use $linkedin-company-content-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reddit Community Monitor"
+  short_description: "Turn Reddit community activity into a periodic social-listening digest for product,..."
+  default_prompt: "Use $reddit-community-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

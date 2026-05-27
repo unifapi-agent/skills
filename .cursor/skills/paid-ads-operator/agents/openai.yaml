@@ -1,0 +1,4 @@
+interface:
+  display_name: "Paid Ads Operator"
+  short_description: "Plan paid-ads intelligence and operations before ad-account read/write APIs exist."
+  default_prompt: "Use $paid-ads-operator to separate public ad intelligence from owned-ad operations and list required ad account APIs."

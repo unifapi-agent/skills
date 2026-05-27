@@ -1,0 +1,4 @@
+interface:
+  display_name: "X Community Monitor"
+  short_description: "Create a channel-agent digest for public X Community activity and identify discussi..."
+  default_prompt: "Use $x-community-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

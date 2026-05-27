@@ -1,0 +1,4 @@
+interface:
+  display_name: "Social Launch Monitor"
+  short_description: "Summarize launch awareness, questions, objections, supporters, detractors, and resp..."
+  default_prompt: "Use $social-launch-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

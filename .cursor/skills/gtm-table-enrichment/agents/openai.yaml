@@ -1,0 +1,4 @@
+interface:
+  display_name: "GTM Table Enrichment"
+  short_description: "Enrich GTM tables with cited web, social, and company evidence."
+  default_prompt: "Use $gtm-table-enrichment to normalize a lead/account table, enrich rows with cited public evidence, and identify unresolved or API-backed fields."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "X Social Listening"
+  short_description: "Build a real-time-ish public X listening brief with narratives, high-signal posts, ..."
+  default_prompt: "Use $x-social-listening to gather public evidence through UnifAPI and return a decision-ready brief."

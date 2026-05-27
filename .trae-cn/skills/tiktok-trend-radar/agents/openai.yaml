@@ -1,0 +1,4 @@
+interface:
+  display_name: "TikTok Trend Radar"
+  short_description: "Turn TikTok search and trend signals into content ideas, creator leads, and campaig..."
+  default_prompt: "Use $tiktok-trend-radar to gather public evidence through UnifAPI and return a decision-ready brief."

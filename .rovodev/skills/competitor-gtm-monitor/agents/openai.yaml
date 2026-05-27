@@ -1,0 +1,4 @@
+interface:
+  display_name: "Competitor GTM Monitor"
+  short_description: "Produce an evidence-backed competitor digest with launches, positioning shifts, hir..."
+  default_prompt: "Use $competitor-gtm-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

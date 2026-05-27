@@ -1,0 +1,4 @@
+interface:
+  display_name: "Outbound Personalization Brief"
+  short_description: "Generate a concise, evidence-backed personalization brief before writing outbound m..."
+  default_prompt: "Use $outbound-personalization-brief to gather public evidence through UnifAPI and return a decision-ready brief."

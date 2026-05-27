@@ -1,0 +1,4 @@
+interface:
+  display_name: "Creator Comment Miner"
+  short_description: "Analyze audience response under specific posts to decide whether a creator, topic, ..."
+  default_prompt: "Use $creator-comment-miner to gather public evidence through UnifAPI and return a decision-ready brief."

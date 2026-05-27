@@ -1,0 +1,4 @@
+interface:
+  display_name: "Technical SEO Repo Auditor"
+  short_description: "Audit and fix technical SEO in local repos or known websites."
+  default_prompt: "Use $technical-seo-repo-auditor to inspect SEO code paths, patch issues when requested, and report focused verification."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cross Channel Content Brief"
+  short_description: "Find what a market is already discussing and convert it into channel-specific conte..."
+  default_prompt: "Use $cross-channel-content-brief to gather public evidence through UnifAPI and return a decision-ready brief."

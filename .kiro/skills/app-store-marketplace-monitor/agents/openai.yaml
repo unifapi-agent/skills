@@ -1,0 +1,4 @@
+interface:
+  display_name: "App Store Marketplace Monitor"
+  short_description: "Inspect public marketplace listings and demand signals."
+  default_prompt: "Use $app-store-marketplace-monitor to fetch public listings/reviews, add social/video demand context, and note marketplace API gaps."

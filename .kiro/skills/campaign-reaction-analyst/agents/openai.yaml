@@ -1,0 +1,4 @@
+interface:
+  display_name: "Campaign Reaction Analyst"
+  short_description: "Combine public comments, quotes, replies, posts, and videos into a structured react..."
+  default_prompt: "Use $campaign-reaction-analyst to gather public evidence through UnifAPI and return a decision-ready brief."

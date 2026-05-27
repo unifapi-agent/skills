@@ -1,0 +1,4 @@
+interface:
+  display_name: "Category Demand Scout"
+  short_description: "Create an early demand map for founders, product marketers, investors, or growth te..."
+  default_prompt: "Use $category-demand-scout to gather public evidence through UnifAPI and return a decision-ready brief."
