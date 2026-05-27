@@ -12,7 +12,7 @@ Edit the root source files instead:
 Then run:
 
 ```bash
-node scripts/sync-distribution-bundles.mjs
+node scripts/build
 ```
 
-Use `node scripts/sync-distribution-bundles.mjs --check` to verify that generated bundles have not drifted from the root source.
+Use `node scripts/build --check` to verify that generated bundles have not drifted from the root source.

@@ -122,17 +122,14 @@ plugins/unifapi/                 # generated Codex marketplace bundle
 mcp.json
 skills/
 docs/non-developer-usage.md
-scripts/sync-distribution-bundles.mjs
-scripts/sync-plugin-bundle.mjs    # compatibility wrapper
+scripts/build
 ```
 
 When changing `.codex-plugin/`, `.mcp.json`, `skills/`, or docs that bundled skills link to, regenerate the plugin and provider bundles before validation:
 
 ```bash
-node scripts/sync-distribution-bundles.mjs
+node scripts/build
 ```
-
-`node scripts/sync-plugin-bundle.mjs` remains as a compatibility wrapper for older checklists.
 
 Do not edit files under `plugins/unifapi/skills`, `plugins/unifapi/docs`, `plugins/unifapi/.codex-plugin`, or provider-native `*/skills` output by hand unless you are debugging the generated output. Edit the root source files and sync.
 
@@ -141,7 +138,7 @@ Do not edit files under `plugins/unifapi/skills`, `plugins/unifapi/docs`, `plugi
 Run these checks after plugin metadata changes:
 
 ```bash
-node scripts/sync-distribution-bundles.mjs --check
+node scripts/build --check
 python3 /path/to/plugin-creator/scripts/validate_plugin.py .
 ```
 

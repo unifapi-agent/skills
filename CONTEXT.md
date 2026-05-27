@@ -69,7 +69,7 @@ The preferred packaging model for non-developer users. Users install UnifAPI fro
 _Avoid_: CLI-first onboarding, raw skill install as primary CTA, pasted-token setup
 
 **Codex Plugin Bundle**:
-The generated installable Codex plugin directory under `plugins/unifapi`. It must contain `.codex-plugin/plugin.json`, `.mcp.json`, linked docs, and the full `skills/` tree so Codex marketplace installation caches both MCP and Skills. The root repo remains the source of truth; regenerate the bundle with `scripts/sync-plugin-bundle.mjs`.
+The generated installable Codex plugin directory under `plugins/unifapi`. It must contain `.codex-plugin/plugin.json`, `.mcp.json`, linked docs, and the full `skills/` tree so Codex marketplace installation caches both MCP and Skills. The root repo remains the source of truth; regenerate the bundle with `scripts/build`.
 _Avoid_: hand-edited bundle, marketplace entry pointing at repo root, symlink-only bundle, missing MCP or skill files
 
 **Provider-Native Skill Tree**:
