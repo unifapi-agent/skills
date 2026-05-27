@@ -32,6 +32,26 @@ _Avoid_: Primary MCP auth, required setup, pasted secret
 A Skill that applies UnifAPI to a specific agent workflow or business scenario. `skills/kol-pricing` is the first Workflow Skill.
 _Avoid_: Platform skill, example page, demo app
 
+**Workflow Portfolio**:
+The broad set of Workflow Skills that productize likely public-data use cases across GTM, growth, creator marketing, social listening, and web3 monitoring. The portfolio is not capped at a round number; it should cover high-probability scenarios that UnifAPI can support with current or near-term public-data operations.
+_Avoid_: API endpoint catalog, fixed 20-skill quota, demo collection
+
+**GTM Data Workflow**:
+A Workflow Skill shaped around finding, enriching, scoring, monitoring, or personalizing public GTM signals. It uses Clay-like data steps but returns an agent-ready business artifact.
+_Avoid_: raw lead table, generic sales prompt, private CRM workflow
+
+**Channel Agent Output**:
+The opportunity brief, alert, draft, or action plan produced by a Workflow Skill for a specific public channel. It borrows the Okara-style channel-agent framing without implying autonomous publishing or private account access.
+_Avoid_: scheduled autopilot, CMS publisher, ad account operator
+
+**Coverage Gap**:
+A documented strong user need that UnifAPI Skills should acknowledge but cannot fully satisfy with the current UnifAPI public-data API surface. Coverage Gaps belong in a markdown planning artifact, not inside a Workflow Skill as if they were supported.
+_Avoid_: hidden limitation, broken skill, unsupported promise
+
+**Planned Core Skill**:
+A Workflow Skill for a high-demand user job where the skill surface should exist before every required API is ready. Planned Core Skills must label current proxy coverage and API backfill requirements instead of pretending full execution is supported.
+_Avoid_: fake supported skill, endpoint wishlist only, hidden roadmap item
+
 **Skill Package**:
 The portable contents of a Skill: `SKILL.md`, references, scripts, and agent metadata. It excludes the original app UI, server, and local product config unless those files are specifically rewritten as skill assets.
 _Avoid_: Full app migration, repository mirror, source app
@@ -85,3 +105,11 @@ Domain expert: "No. Use `plugins/unifapi` as the Codex marketplace bundle so ins
 Dev: "Should KOL Pricing bring over the Vue/Hono app?"
 
 Domain expert: "No. Bring only the Skill Package: workflow, references, scripts, and agent metadata."
+
+Dev: "Should the new GTM skills be exactly twenty API wrappers?"
+
+Domain expert: "No. Build a Workflow Portfolio: enough Workflow Skills to cover high-probability GTM, growth, creator, social listening, and web3 monitoring scenarios, while keeping API limitations explicit in Coverage Gaps."
+
+Dev: "Should core demand like SEO, web research, CRM export, or on-chain monitors be omitted until APIs are ready?"
+
+Domain expert: "No. Create Planned Core Skills for the important jobs now, mark current coverage honestly, and list the API backfill required."

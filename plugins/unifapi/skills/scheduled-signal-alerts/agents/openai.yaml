@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scheduled Signal Alerts"
+  short_description: "Plan scheduled monitors, thresholds, diffs, and notifications before monitor infra exists."
+  default_prompt: "Use $scheduled-signal-alerts to define cadence, thresholds, destinations, current manual workflow, and required monitor infrastructure."

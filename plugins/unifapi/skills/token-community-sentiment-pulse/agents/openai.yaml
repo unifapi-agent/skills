@@ -1,0 +1,4 @@
+interface:
+  display_name: "Token Community Sentiment Pulse"
+  short_description: "Summarize public community mood, recurring questions, complaints, catalysts, and ri..."
+  default_prompt: "Use $token-community-sentiment-pulse to gather public evidence through UnifAPI and return a decision-ready brief."

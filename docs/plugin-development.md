@@ -78,7 +78,7 @@ skills/
 docs/non-developer-usage.md
 ```
 
-When changing `.codex-plugin/`, `.mcp.json`, or `skills/`, keep `plugins/unifapi/` in sync before validating Codex marketplace installation.
+When changing `.codex-plugin/`, `.mcp.json`, `skills/`, or docs that bundled skills link to, keep `plugins/unifapi/` in sync before validating Codex marketplace installation.
 
 ## Validation
 

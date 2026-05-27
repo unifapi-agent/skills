@@ -1,0 +1,4 @@
+interface:
+  display_name: "Account Signal Monitor"
+  short_description: "Produce a repeatable account-monitoring report that highlights actionable public si..."
+  default_prompt: "Use $account-signal-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

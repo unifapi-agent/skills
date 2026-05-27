@@ -2,7 +2,7 @@
 
 [![skills.sh](https://skills.sh/b/unifapi-agent/skills)](https://skills.sh/unifapi-agent/skills)
 
-Agent-ready workflows and OAuth MCP access for researching public data with UnifAPI. Install the plugin in your AI client to get reusable skills plus the hosted UnifAPI MCP server for live public social, search, scrape, and news data.
+Agent-ready workflows and OAuth MCP access for researching public data with UnifAPI. Install the plugin in your AI client to get reusable skills plus the hosted UnifAPI MCP server for live public social and professional-platform data.
 
 Use this repo when you want an agent to produce a ranked table, creator brief, market scan, competitor monitor, lead list, or evidence-backed research summary without wiring every data API by hand.
 
@@ -23,6 +23,11 @@ For step-by-step instructions, see [Non-Developer Usage](./docs/non-developer-us
 
 - `skills/unifapi` - public-data research workflows powered by UnifAPI API and MCP access.
 - `skills/kol-pricing` - pricing and ranking workflows for X/Twitter KOL campaigns, adapted from [Antoniaiaiaiaia/kol-pricing](https://github.com/Antoniaiaiaiaia/kol-pricing).
+- GTM workflow skills - account research, signal monitoring, LinkedIn lead discovery, buyer mapping, enrichment, and competitor intelligence.
+- Growth workflow skills - social listening, Reddit opportunities, launch monitoring, content briefs, demand scouting, and channel digests.
+- Creator workflow skills - Instagram, YouTube, multi-platform creator shortlists, comment mining, and KOL campaign analysis.
+- Web3 workflow skills - crypto narrative monitoring, token-community sentiment, launch watch, and web3 KOL watchlists using public social signals.
+- Planned Core skills - high-demand SEO, web research, enrichment, CRM/export, scheduling, publishing, ads, on-chain, community, marketplace, ecommerce, and private-workspace workflows with explicit API backfill requirements.
 - `.mcp.json` - hosted MCP server configuration for `https://mcp.unifapi.com`.
 - `plugins/unifapi` - Codex marketplace bundle containing `.codex-plugin/`, `.mcp.json`, and the skills.
 - `.codex-plugin/`, `.claude-plugin/`, and `.cursor-plugin/` manifests for platform-specific plugin distribution.
@@ -60,10 +65,23 @@ Then choose the skills you want to install. This is the fallback path, not the r
 
 ## Available Skills
 
-| Skill | Description | Source |
-| --- | --- | --- |
-| [`unifapi`](./skills/unifapi) | Public-data research workflows powered by UnifAPI API and MCP access | Authored here |
-| [`kol-pricing`](./skills/kol-pricing) | Price and rank X/Twitter KOL campaigns | Adapted from [Antoniaiaiaiaia/kol-pricing](https://github.com/Antoniaiaiaiaia/kol-pricing) |
+The plugin now ships a broad hybrid Workflow Portfolio: Clay-style public-data workflows for find/enrich/score/signals, with Okara-style channel-agent outputs such as opportunity briefs, monitors, drafts, and action plans.
+
+| Group | Skills |
+| --- | --- |
+| Platform | [`unifapi`](./skills/unifapi) |
+| GTM | [`account-research-brief`](./skills/account-research-brief), [`account-signal-monitor`](./skills/account-signal-monitor), [`buyer-committee-mapper`](./skills/buyer-committee-mapper), [`competitor-gtm-monitor`](./skills/competitor-gtm-monitor), [`competitor-talent-watch`](./skills/competitor-talent-watch), [`linkedin-ad-intel`](./skills/linkedin-ad-intel), [`linkedin-founder-lead-list`](./skills/linkedin-founder-lead-list), [`linkedin-hiring-signal-finder`](./skills/linkedin-hiring-signal-finder), [`linkedin-people-enrichment`](./skills/linkedin-people-enrichment), [`market-map-from-social`](./skills/market-map-from-social), [`outbound-personalization-brief`](./skills/outbound-personalization-brief), [`partner-prospect-finder`](./skills/partner-prospect-finder) |
+| Growth | [`campaign-reaction-analyst`](./skills/campaign-reaction-analyst), [`category-demand-scout`](./skills/category-demand-scout), [`cross-channel-competitor-monitor`](./skills/cross-channel-competitor-monitor), [`cross-channel-content-brief`](./skills/cross-channel-content-brief), [`instagram-location-signal-monitor`](./skills/instagram-location-signal-monitor), [`linkedin-company-content-monitor`](./skills/linkedin-company-content-monitor), [`reddit-community-monitor`](./skills/reddit-community-monitor), [`reddit-opportunity-finder`](./skills/reddit-opportunity-finder), [`reddit-voice-of-customer`](./skills/reddit-voice-of-customer), [`social-launch-monitor`](./skills/social-launch-monitor), [`threads-opportunity-monitor`](./skills/threads-opportunity-monitor), [`tiktok-trend-radar`](./skills/tiktok-trend-radar), [`x-community-monitor`](./skills/x-community-monitor), [`x-list-monitor`](./skills/x-list-monitor), [`x-social-listening`](./skills/x-social-listening), [`youtube-topic-monitor`](./skills/youtube-topic-monitor) |
+| Creator Marketing | [`creator-comment-miner`](./skills/creator-comment-miner), [`instagram-creator-discovery`](./skills/instagram-creator-discovery), [`kol-pricing`](./skills/kol-pricing), [`multi-platform-creator-shortlist`](./skills/multi-platform-creator-shortlist), [`youtube-creator-research`](./skills/youtube-creator-research) |
+| Web3 | [`crypto-narrative-monitor`](./skills/crypto-narrative-monitor), [`token-community-sentiment-pulse`](./skills/token-community-sentiment-pulse), [`web3-kol-watchlist`](./skills/web3-kol-watchlist), [`web3-launch-watch`](./skills/web3-launch-watch) |
+| Planned Core | [`app-store-marketplace-monitor`](./skills/app-store-marketplace-monitor), [`autonomous-channel-agent`](./skills/autonomous-channel-agent), [`company-domain-enrichment`](./skills/company-domain-enrichment), [`crm-export-sequence`](./skills/crm-export-sequence), [`discord-telegram-community-monitor`](./skills/discord-telegram-community-monitor), [`ecommerce-product-monitor`](./skills/ecommerce-product-monitor), [`email-contact-finder`](./skills/email-contact-finder), [`news-pr-monitor`](./skills/news-pr-monitor), [`paid-ads-operator`](./skills/paid-ads-operator), [`private-workspace-signal-connector`](./skills/private-workspace-signal-connector), [`scheduled-signal-alerts`](./skills/scheduled-signal-alerts), [`seo-aeo-monitor`](./skills/seo-aeo-monitor), [`web-intent-visitor-tracking`](./skills/web-intent-visitor-tracking), [`web-page-change-monitor`](./skills/web-page-change-monitor), [`web-research-agent`](./skills/web-research-agent), [`web3-onchain-monitor`](./skills/web3-onchain-monitor) |
+
+`kol-pricing` is adapted from [Antoniaiaiaiaia/kol-pricing](https://github.com/Antoniaiaiaiaia/kol-pricing). The other workflow skills are authored here.
+
+Planned Core skills exist because the user demand is strong even when some APIs are not ready yet. Each one has a `Current Coverage` section and an `API Backfill Required` section so agents can run safe proxy research today and expose the product/API work needed for full execution.
+
+For strong user requests that the current API does not yet cover, see [API Coverage Gaps](./docs/api-coverage-gaps.md).
+For the demand and quality review behind this portfolio, see [Skill Portfolio Review](./docs/skill-portfolio-review.md).
 
 ## Connect MCP
 
@@ -182,8 +200,12 @@ Use Streamable HTTP with the canonical server URL:
 With the `unifapi` skill and MCP connected, an agent can:
 
 - search public-data operations and choose the right one for the job
-- analyze Twitter/X KOLs, creator profiles, public posts, comments, and trends
-- build influencer shortlists, pricing ranges, competitor snapshots, or market briefs
+- analyze Twitter/X KOLs, creator profiles, public posts, comments, communities, and trends
+- build GTM account briefs, LinkedIn lead lists, buyer maps, competitor monitors, and hiring-signal reports
+- find Reddit opportunities, mine voice-of-customer language, monitor launches, and draft channel-specific content briefs
+- create creator shortlists across X, Instagram, TikTok, YouTube, LinkedIn, Threads, and Reddit
+- monitor web3 narratives, token communities, launch reactions, and public KOL watchlists using social signals
+- define Planned Core workflows for SEO/AEO, web research, enrichment, CRM/export, scheduling, publishing, ads, on-chain, and private connectors while listing the API backfill needed for full execution
 - call live public-data APIs only when evidence is needed
 - return decision-ready artifacts instead of raw API dumps
 

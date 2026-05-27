@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ecommerce Product Monitor"
+  short_description: "Plan product, price, review, and SKU monitoring before ecommerce APIs exist."
+  default_prompt: "Use $ecommerce-product-monitor to scope products, proxy social evidence, and required marketplace/product data APIs."

@@ -8,9 +8,87 @@
       "skills": ["unifapi"]
     },
     {
-      "title": "Marketing",
-      "description": "Skills for creator research, KOL pricing, and campaign decisions.",
-      "skills": ["kol-pricing"]
+      "title": "GTM",
+      "description": "Clay-style public GTM workflows for account research, lead discovery, enrichment, competitors, and market maps.",
+      "skills": [
+        "account-research-brief",
+        "account-signal-monitor",
+        "buyer-committee-mapper",
+        "competitor-gtm-monitor",
+        "competitor-talent-watch",
+        "linkedin-ad-intel",
+        "linkedin-founder-lead-list",
+        "linkedin-hiring-signal-finder",
+        "linkedin-people-enrichment",
+        "market-map-from-social",
+        "outbound-personalization-brief",
+        "partner-prospect-finder"
+      ]
+    },
+    {
+      "title": "Growth",
+      "description": "Okara-style channel-agent outputs for social listening, content, launches, demand, and community opportunities.",
+      "skills": [
+        "campaign-reaction-analyst",
+        "category-demand-scout",
+        "cross-channel-competitor-monitor",
+        "cross-channel-content-brief",
+        "instagram-location-signal-monitor",
+        "linkedin-company-content-monitor",
+        "reddit-community-monitor",
+        "reddit-opportunity-finder",
+        "reddit-voice-of-customer",
+        "social-launch-monitor",
+        "threads-opportunity-monitor",
+        "tiktok-trend-radar",
+        "x-community-monitor",
+        "x-list-monitor",
+        "x-social-listening",
+        "youtube-topic-monitor"
+      ]
+    },
+    {
+      "title": "Creator Marketing",
+      "description": "Creator discovery, campaign analysis, comment mining, and platform-specific KOL workflows.",
+      "skills": [
+        "creator-comment-miner",
+        "instagram-creator-discovery",
+        "kol-pricing",
+        "multi-platform-creator-shortlist",
+        "youtube-creator-research"
+      ]
+    },
+    {
+      "title": "Web3",
+      "description": "Public social monitoring for crypto narratives, token communities, launches, and web3 KOL watchlists.",
+      "skills": [
+        "crypto-narrative-monitor",
+        "token-community-sentiment-pulse",
+        "web3-kol-watchlist",
+        "web3-launch-watch"
+      ]
+    },
+    {
+      "title": "Planned Core",
+      "description": "High-demand Clay/Okara-style workflow surfaces created before every required API is ready; each skill marks current coverage and API backfill requirements.",
+      "skills": [
+        "app-store-marketplace-monitor",
+        "autonomous-channel-agent",
+        "company-domain-enrichment",
+        "crm-export-sequence",
+        "discord-telegram-community-monitor",
+        "ecommerce-product-monitor",
+        "email-contact-finder",
+        "news-pr-monitor",
+        "paid-ads-operator",
+        "private-workspace-signal-connector",
+        "scheduled-signal-alerts",
+        "seo-aeo-monitor",
+        "web-intent-visitor-tracking",
+        "web-page-change-monitor",
+        "web-research-agent",
+        "web3-onchain-monitor"
+      ]
     }
   ]
 }

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web Intent Visitor Tracking"
+  short_description: "Plan web intent and visitor identification before first-party tracking APIs exist."
+  default_prompt: "Use $web-intent-visitor-tracking to define intent events, scoring, proxy signals, and tracking/enrichment API backfill."

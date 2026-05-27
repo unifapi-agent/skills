@@ -1,6 +1,6 @@
 {
   "name": "unifapi",
-  "description": "Plugin with UnifAPI public-data skills and the hosted OAuth MCP server for social, search, scrape, news, and agent-ready analysis.",
+  "description": "Plugin with UnifAPI public-data skills, planned API-backfill workflows, and the hosted OAuth MCP server for GTM, growth, creator, and web3 monitoring.",
   "version": "1.0.0",
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
@@ -12,19 +12,19 @@
   "homepage": "https://unifapi.com/skills",
   "repository": "https://github.com/unifapi-agent/skills",
   "license": "MIT",
-  "keywords": ["unifapi", "mcp", "public-data", "agents", "social-data", "search-api"],
+  "keywords": ["unifapi", "mcp", "public-data", "agents", "social-data", "gtm", "growth", "web3"],
   "interface": {
     "displayName": "UnifAPI",
-    "shortDescription": "Public-data skills through OAuth MCP",
-    "longDescription": "UnifAPI gives agents reusable skills and OAuth MCP access for public social, search, scrape, news, and creator analysis workflows. Install the plugin, sign in with UnifAPI when prompted, then ask Codex for ranked tables, creator briefs, market scans, or evidence-backed public-data reports.",
+    "shortDescription": "Public-data GTM skills through OAuth MCP",
+    "longDescription": "UnifAPI gives agents reusable skills and OAuth MCP access for public social and professional-platform workflows: GTM account research, growth monitoring, creator discovery, social listening, and web3 narrative tracking. It also includes Planned Core skills for high-demand workflows whose APIs are still being backfilled, so agents can expose current coverage and implementation requirements instead of over-promising. Install the plugin, sign in with UnifAPI when prompted, then ask Codex for ranked tables, creator briefs, market scans, or evidence-backed public-data reports.",
     "developerName": "UnifAPI",
     "category": "Developer Tools",
     "capabilities": ["Read", "Interactive"],
     "websiteURL": "https://unifapi.com/skills",
     "defaultPrompt": [
-      "Use UnifAPI to gather public evidence for this task.",
+      "Use UnifAPI to gather public GTM evidence for this task.",
       "Analyze these creators with live public social data.",
-      "Find the right UnifAPI operation and return a brief."
+      "Monitor this market, competitor, or web3 narrative with public signals."
     ],
     "brandColor": "#111827"
   }

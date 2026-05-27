@@ -1,0 +1,4 @@
+interface:
+  display_name: "Company Domain Enrichment"
+  short_description: "Plan domain-to-company enrichment while current coverage requires known LinkedIn identity."
+  default_prompt: "Use $company-domain-enrichment to define enrichment fields, use available LinkedIn evidence, and specify missing domain/company APIs."

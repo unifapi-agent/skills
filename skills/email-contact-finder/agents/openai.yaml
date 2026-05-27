@@ -1,0 +1,4 @@
+interface:
+  display_name: "Email Contact Finder"
+  short_description: "Plan compliant contact discovery before email, phone, and verification APIs exist."
+  default_prompt: "Use $email-contact-finder to define contact fields, use public contact evidence where available, and mark required finder/verifier APIs."

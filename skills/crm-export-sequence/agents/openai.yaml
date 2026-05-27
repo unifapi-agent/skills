@@ -1,0 +1,4 @@
+interface:
+  display_name: "CRM Export Sequence"
+  short_description: "Plan CRM, sequence, and alert handoff from GTM research outputs."
+  default_prompt: "Use $crm-export-sequence to map fields, dedupe keys, routing rules, drafts, and the CRM/export APIs needed for automation."

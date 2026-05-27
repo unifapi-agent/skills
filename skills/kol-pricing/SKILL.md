@@ -1,6 +1,6 @@
 ---
 name: kol-pricing
-description: "Use this skill when pricing, ranking, or researching X/Twitter KOLs for a creator marketing campaign, especially when the user provides handles, asks for batch KOL analysis, wants outreach recommendations, wants Markdown plus Tailwind HTML campaign reports, or wants an agent-native version of the KOL Pricing framework. Require product context before analysis, prefer UnifAPI MCP tools for public X data, then run the deterministic pricing workflow before drafting outreach."
+description: "Use when pricing, ranking, or researching X/Twitter KOLs for creator marketing: handle batches, campaign fit, outreach recs, and Markdown/Tailwind reports. Requires product context and deterministic UnifAPI-backed pricing."
 license: MIT
 metadata:
   author: UnifAPI
