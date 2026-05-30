@@ -1,0 +1,4 @@
+interface:
+  display_name: "Market Map From Social"
+  short_description: "Map the visible ecosystem around a category: companies, creators, communities, narr..."
+  default_prompt: "Use $market-map-from-social to gather public evidence through UnifAPI and return a decision-ready brief."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Persona Classification Agent"
+  short_description: "Classify leads or accounts into personas with evidence."
+  default_prompt: "Use $persona-classification-agent to label these rows by persona, role, or ICP bucket with confidence."

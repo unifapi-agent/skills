@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reddit Opportunity Finder"
+  short_description: "Identify relevant Reddit threads, questions, pain points, and community norms for h..."
+  default_prompt: "Use $reddit-opportunity-finder to gather public evidence through UnifAPI and return a decision-ready brief."

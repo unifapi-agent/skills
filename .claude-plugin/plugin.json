@@ -1,7 +1,7 @@
 {
   "name": "unifapi",
   "displayName": "UnifAPI",
-  "description": "Plugin with UnifAPI public-data skills and the hosted OAuth MCP server for social, search, scrape, news, and agent-ready analysis.",
+  "description": "Plugin with UnifAPI public-data skills, agent-native web/SEO workflows, API-backfill workflows, and the hosted OAuth MCP server for GTM, growth, creator, and web3 monitoring.",
   "version": "1.0.0",
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
@@ -12,5 +12,5 @@
   "homepage": "https://unifapi.com/skills",
   "repository": "https://github.com/unifapi-agent/skills",
   "license": "MIT",
-  "keywords": ["unifapi", "mcp", "public-data", "agents", "social-data", "search-api"]
+  "keywords": ["unifapi", "mcp", "public-data", "agents", "social-data", "gtm", "growth", "web3"]
 }

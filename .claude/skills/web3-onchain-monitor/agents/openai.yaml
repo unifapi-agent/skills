@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web3 Onchain Monitor"
+  short_description: "Plan social-plus-on-chain web3 monitoring before chain and market APIs exist."
+  default_prompt: "Use $web3-onchain-monitor to map entities, current social evidence, and required wallet/contract/token/market APIs."

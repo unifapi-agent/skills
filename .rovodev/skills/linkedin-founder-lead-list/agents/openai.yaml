@@ -1,0 +1,4 @@
+interface:
+  display_name: "LinkedIn Founder Lead List"
+  short_description: "Find and qualify founders or operators who match a product ICP using public LinkedI..."
+  default_prompt: "Use $linkedin-founder-lead-list to gather public evidence through UnifAPI and return a decision-ready brief."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO Article Writer"
+  short_description: "Create sourced SEO/AEO article briefs, outlines, and drafts."
+  default_prompt: "Use $seo-article-writer to turn search intent and demand evidence into an editorial-ready article package."

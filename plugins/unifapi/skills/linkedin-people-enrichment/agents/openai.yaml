@@ -1,0 +1,4 @@
+interface:
+  display_name: "LinkedIn People Enrichment"
+  short_description: "Create a Clay-like public people-enrichment workflow for lead research, candidate m..."
+  default_prompt: "Use $linkedin-people-enrichment to gather public evidence through UnifAPI and return a decision-ready brief."

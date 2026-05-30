@@ -1,0 +1,4 @@
+interface:
+  display_name: "Scheduled Signal Alerts"
+  short_description: "Design recurring alerts using host scheduling when available."
+  default_prompt: "Use $scheduled-signal-alerts to define cadence, thresholds, destinations, use host-native scheduling if available, and note productized alert API gaps."

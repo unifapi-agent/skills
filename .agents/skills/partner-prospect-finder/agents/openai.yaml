@@ -1,0 +1,4 @@
+interface:
+  display_name: "Partner Prospect Finder"
+  short_description: "Build a qualified partner shortlist with evidence for audience overlap, category fi..."
+  default_prompt: "Use $partner-prospect-finder to gather public evidence through UnifAPI and return a decision-ready brief."

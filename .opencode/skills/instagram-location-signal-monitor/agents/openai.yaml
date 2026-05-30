@@ -1,0 +1,4 @@
+interface:
+  display_name: "Instagram Location Signal Monitor"
+  short_description: "Use public Instagram location posts and nearby locations to surface local trends, c..."
+  default_prompt: "Use $instagram-location-signal-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

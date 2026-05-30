@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web3 Launch Watch"
+  short_description: "Create a launch watch report focused on awareness, confusion, FUD, KOL amplificatio..."
+  default_prompt: "Use $web3-launch-watch to gather public evidence through UnifAPI and return a decision-ready brief."

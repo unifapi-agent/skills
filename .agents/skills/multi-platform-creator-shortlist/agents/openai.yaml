@@ -1,0 +1,4 @@
+interface:
+  display_name: "Multi Platform Creator Shortlist"
+  short_description: "Find and rank creators across supported public social channels for campaigns, partn..."
+  default_prompt: "Use $multi-platform-creator-shortlist to gather public evidence through UnifAPI and return a decision-ready brief."

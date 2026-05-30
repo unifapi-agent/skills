@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cross Channel Competitor Monitor"
+  short_description: "Create an Okara-style competitor monitor using UnifAPI social operations as the evi..."
+  default_prompt: "Use $cross-channel-competitor-monitor to gather public evidence through UnifAPI and return a decision-ready brief."

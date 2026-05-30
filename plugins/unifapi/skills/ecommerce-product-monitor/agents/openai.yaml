@@ -1,0 +1,4 @@
+interface:
+  display_name: "Ecommerce Product Monitor"
+  short_description: "Inspect public product pages and social demand signals."
+  default_prompt: "Use $ecommerce-product-monitor to fetch product/listing evidence, add social demand context, and note price/SKU API gaps."

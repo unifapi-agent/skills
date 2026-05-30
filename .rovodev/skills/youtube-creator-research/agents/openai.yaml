@@ -1,0 +1,4 @@
+interface:
+  display_name: "YouTube Creator Research"
+  short_description: "Summarize channel fit, video themes, Shorts activity, related-video context, and sp..."
+  default_prompt: "Use $youtube-creator-research to gather public evidence through UnifAPI and return a decision-ready brief."

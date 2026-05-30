@@ -1,0 +1,4 @@
+interface:
+  display_name: "Buyer Committee Mapper"
+  short_description: "Create a public buyer-committee map that helps a seller or founder decide who to re..."
+  default_prompt: "Use $buyer-committee-mapper to gather public evidence through UnifAPI and return a decision-ready brief."

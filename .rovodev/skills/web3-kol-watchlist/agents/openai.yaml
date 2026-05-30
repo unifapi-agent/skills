@@ -1,0 +1,4 @@
+interface:
+  display_name: "Web3 KOL Watchlist"
+  short_description: "Rank public web3 voices by topical relevance, recent activity, influence proxies, a..."
+  default_prompt: "Use $web3-kol-watchlist to gather public evidence through UnifAPI and return a decision-ready brief."

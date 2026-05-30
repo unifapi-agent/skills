@@ -1,0 +1,4 @@
+interface:
+  display_name: "Hacker News Opportunity Monitor"
+  short_description: "Find HN discussions, Show HN angles, and technical-founder opportunities."
+  default_prompt: "Use $hacker-news-opportunity-monitor to search HN, rank relevant threads, and draft helpful non-promotional participation angles."

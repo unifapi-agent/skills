@@ -1,0 +1,4 @@
+interface:
+  display_name: "Competitor Talent Watch"
+  short_description: "Turn public LinkedIn jobs and people signals into an interpretation of competitor p..."
+  default_prompt: "Use $competitor-talent-watch to gather public evidence through UnifAPI and return a decision-ready brief."

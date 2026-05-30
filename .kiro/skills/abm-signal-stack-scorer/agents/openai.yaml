@@ -1,0 +1,4 @@
+interface:
+  display_name: "ABM Signal Stack Scorer"
+  short_description: "Rank accounts by stacked public buying signals and fit."
+  default_prompt: "Use $abm-signal-stack-scorer to combine public account signals into a prioritized ABM action queue."

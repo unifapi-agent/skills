@@ -1,0 +1,4 @@
+interface:
+  display_name: "LinkedIn Hiring Signal Finder"
+  short_description: "Detect public hiring signals that imply budget, urgency, new initiatives, stack cha..."
+  default_prompt: "Use $linkedin-hiring-signal-finder to gather public evidence through UnifAPI and return a decision-ready brief."

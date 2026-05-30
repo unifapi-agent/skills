@@ -8,9 +8,107 @@
       "skills": ["unifapi"]
     },
     {
-      "title": "Marketing",
-      "description": "Skills for creator research, KOL pricing, and campaign decisions.",
-      "skills": ["kol-pricing"]
+      "title": "GTM",
+      "description": "Clay-style public GTM workflows for account research, lead discovery, enrichment, tables, competitors, and market maps.",
+      "skills": [
+        "abm-signal-stack-scorer",
+        "account-research-brief",
+        "account-signal-monitor",
+        "buyer-committee-mapper",
+        "company-domain-enrichment",
+        "competitor-gtm-monitor",
+        "competitor-talent-watch",
+        "gtm-table-enrichment",
+        "icp-account-list-builder",
+        "lead-account-scoring-agent",
+        "linkedin-ad-intel",
+        "linkedin-founder-lead-list",
+        "linkedin-hiring-signal-finder",
+        "linkedin-people-enrichment",
+        "market-map-from-social",
+        "outbound-sequence-generator",
+        "outbound-personalization-brief",
+        "partner-prospect-finder",
+        "persona-classification-agent"
+      ]
+    },
+    {
+      "title": "Growth",
+      "description": "Okara-style channel-agent outputs for social listening, content, launches, demand, and community opportunities.",
+      "skills": [
+        "campaign-reaction-analyst",
+        "category-demand-scout",
+        "cross-channel-competitor-monitor",
+        "cross-channel-content-brief",
+        "founder-social-post-writer",
+        "hacker-news-opportunity-monitor",
+        "instagram-location-signal-monitor",
+        "linkedin-company-content-monitor",
+        "product-growth-strategy-brief",
+        "reddit-community-monitor",
+        "reddit-opportunity-finder",
+        "reddit-voice-of-customer",
+        "social-launch-monitor",
+        "threads-opportunity-monitor",
+        "tiktok-trend-radar",
+        "x-community-monitor",
+        "x-list-monitor",
+        "x-social-listening",
+        "youtube-topic-monitor"
+      ]
+    },
+    {
+      "title": "Agent-Native Web & SEO",
+      "description": "Web, SEO, news, page-change, marketplace, and ecommerce workflows that use host-agent search, fetch, shell, and code execution.",
+      "skills": [
+        "app-store-marketplace-monitor",
+        "backlink-mention-monitor",
+        "ecommerce-product-monitor",
+        "growth-analytics-brief",
+        "news-pr-monitor",
+        "seo-aeo-monitor",
+        "seo-article-writer",
+        "technical-seo-repo-auditor",
+        "web-page-change-monitor",
+        "web-research-agent"
+      ]
+    },
+    {
+      "title": "Creator Marketing",
+      "description": "Creator discovery, campaign analysis, comment mining, and platform-specific KOL workflows.",
+      "skills": [
+        "creator-comment-miner",
+        "instagram-creator-discovery",
+        "kol-pricing",
+        "multi-platform-creator-shortlist",
+        "ugc-ad-creative-brief",
+        "youtube-creator-research"
+      ]
+    },
+    {
+      "title": "Web3",
+      "description": "Public social monitoring for crypto narratives, token communities, launches, and web3 KOL watchlists.",
+      "skills": [
+        "crypto-narrative-monitor",
+        "token-community-sentiment-pulse",
+        "web3-kol-watchlist",
+        "web3-launch-watch"
+      ]
+    },
+    {
+      "title": "API Backfill",
+      "description": "High-demand Clay/Okara-style workflow surfaces that still need product APIs, private connectors, persistence, write actions, or source-specific data.",
+      "skills": [
+        "autonomous-channel-agent",
+        "crm-export-sequence",
+        "discord-telegram-community-monitor",
+        "email-contact-finder",
+        "paid-ads-operator",
+        "private-workspace-signal-connector",
+        "scheduled-signal-alerts",
+        "web-intent-visitor-tracking",
+        "web3-onchain-monitor"
+      ]
     }
   ]
 }

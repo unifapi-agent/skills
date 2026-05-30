@@ -2,7 +2,7 @@
 
 [![skills.sh](https://skills.sh/b/unifapi-agent/skills)](https://skills.sh/unifapi-agent/skills)
 
-Agent-ready workflows and OAuth MCP access for researching public data with UnifAPI. Install the plugin in your AI client to get reusable skills plus the hosted UnifAPI MCP server for live public social, search, scrape, and news data.
+Agent-ready workflows and OAuth MCP access for researching public data with [UnifAPI](https://unifapi.com/). Install the [UnifAPI Skills plugin](https://unifapi.com/skills) in your AI client to get reusable skills, agent-native search/fetch/code workflows, and the hosted UnifAPI MCP server for live public social and professional-platform data.
 
 Use this repo when you want an agent to produce a ranked table, creator brief, market scan, competitor monitor, lead list, or evidence-backed research summary without wiring every data API by hand.
 
@@ -23,8 +23,15 @@ For step-by-step instructions, see [Non-Developer Usage](./docs/non-developer-us
 
 - `skills/unifapi` - public-data research workflows powered by UnifAPI API and MCP access.
 - `skills/kol-pricing` - pricing and ranking workflows for X/Twitter KOL campaigns, adapted from [Antoniaiaiaiaia/kol-pricing](https://github.com/Antoniaiaiaiaia/kol-pricing).
+- GTM workflow skills - account research, signal monitoring, LinkedIn lead discovery, buyer mapping, enrichment, and competitor intelligence.
+- Growth workflow skills - social listening, Reddit opportunities, launch monitoring, content briefs, strategy briefs, founder posts, demand scouting, and channel digests.
+- Creator workflow skills - Instagram, YouTube, multi-platform creator shortlists, comment mining, UGC/ad creative briefs, and KOL campaign analysis.
+- Web3 workflow skills - crypto narrative monitoring, token-community sentiment, launch watch, and web3 KOL watchlists using public social signals.
+- Agent-native web/SEO/table skills - high-demand web research, HN monitoring, technical SEO, SEO article drafts, growth analytics, backlink/mention monitoring, page diffs, news/PR, marketplace, ecommerce, and table enrichment workflows that can use the host agent's search, fetch, shell, and code execution.
+- API-backfill skills - high-demand CRM/export, contact discovery, scheduling, publishing, ads, on-chain, community, web intent, and private-workspace workflows with explicit product/API backfill requirements.
 - `.mcp.json` - hosted MCP server configuration for `https://mcp.unifapi.com`.
-- `plugins/unifapi` - Codex marketplace bundle containing `.codex-plugin/`, `.mcp.json`, and the skills.
+- `plugins/unifapi` - generated Codex marketplace bundle containing `.codex-plugin/`, `.mcp.json`, docs, and the skills.
+- Generated provider-native skill trees under `.agents/skills`, `.claude/skills`, `.cursor/skills`, `.gemini/skills`, `.github/skills`, `.kiro/skills`, `.opencode/skills`, `.pi/skills`, `.qoder/skills`, `.trae*/skills`, and `.rovodev/skills`.
 - `.codex-plugin/`, `.claude-plugin/`, and `.cursor-plugin/` manifests for platform-specific plugin distribution.
 
 ## Install as a Plugin
@@ -60,10 +67,24 @@ Then choose the skills you want to install. This is the fallback path, not the r
 
 ## Available Skills
 
-| Skill | Description | Source |
-| --- | --- | --- |
-| [`unifapi`](./skills/unifapi) | Public-data research workflows powered by UnifAPI API and MCP access | Authored here |
-| [`kol-pricing`](./skills/kol-pricing) | Price and rank X/Twitter KOL campaigns | Adapted from [Antoniaiaiaiaia/kol-pricing](https://github.com/Antoniaiaiaiaia/kol-pricing) |
+The plugin now ships a broad hybrid Workflow Portfolio: Clay-style public-data workflows for find/enrich/score/signals, with Okara-style channel-agent outputs such as opportunity briefs, monitors, drafts, and action plans.
+
+| Group | Skills |
+| --- | --- |
+| Platform | [`unifapi`](./skills/unifapi) |
+| GTM | [`abm-signal-stack-scorer`](./skills/abm-signal-stack-scorer), [`account-research-brief`](./skills/account-research-brief), [`account-signal-monitor`](./skills/account-signal-monitor), [`buyer-committee-mapper`](./skills/buyer-committee-mapper), [`company-domain-enrichment`](./skills/company-domain-enrichment), [`competitor-gtm-monitor`](./skills/competitor-gtm-monitor), [`competitor-talent-watch`](./skills/competitor-talent-watch), [`gtm-table-enrichment`](./skills/gtm-table-enrichment), [`icp-account-list-builder`](./skills/icp-account-list-builder), [`lead-account-scoring-agent`](./skills/lead-account-scoring-agent), [`linkedin-ad-intel`](./skills/linkedin-ad-intel), [`linkedin-founder-lead-list`](./skills/linkedin-founder-lead-list), [`linkedin-hiring-signal-finder`](./skills/linkedin-hiring-signal-finder), [`linkedin-people-enrichment`](./skills/linkedin-people-enrichment), [`market-map-from-social`](./skills/market-map-from-social), [`outbound-personalization-brief`](./skills/outbound-personalization-brief), [`outbound-sequence-generator`](./skills/outbound-sequence-generator), [`partner-prospect-finder`](./skills/partner-prospect-finder), [`persona-classification-agent`](./skills/persona-classification-agent) |
+| Growth | [`campaign-reaction-analyst`](./skills/campaign-reaction-analyst), [`category-demand-scout`](./skills/category-demand-scout), [`cross-channel-competitor-monitor`](./skills/cross-channel-competitor-monitor), [`cross-channel-content-brief`](./skills/cross-channel-content-brief), [`founder-social-post-writer`](./skills/founder-social-post-writer), [`hacker-news-opportunity-monitor`](./skills/hacker-news-opportunity-monitor), [`instagram-location-signal-monitor`](./skills/instagram-location-signal-monitor), [`linkedin-company-content-monitor`](./skills/linkedin-company-content-monitor), [`product-growth-strategy-brief`](./skills/product-growth-strategy-brief), [`reddit-community-monitor`](./skills/reddit-community-monitor), [`reddit-opportunity-finder`](./skills/reddit-opportunity-finder), [`reddit-voice-of-customer`](./skills/reddit-voice-of-customer), [`social-launch-monitor`](./skills/social-launch-monitor), [`threads-opportunity-monitor`](./skills/threads-opportunity-monitor), [`tiktok-trend-radar`](./skills/tiktok-trend-radar), [`x-community-monitor`](./skills/x-community-monitor), [`x-list-monitor`](./skills/x-list-monitor), [`x-social-listening`](./skills/x-social-listening), [`youtube-topic-monitor`](./skills/youtube-topic-monitor) |
+| Agent-Native Web & SEO | [`app-store-marketplace-monitor`](./skills/app-store-marketplace-monitor), [`backlink-mention-monitor`](./skills/backlink-mention-monitor), [`ecommerce-product-monitor`](./skills/ecommerce-product-monitor), [`growth-analytics-brief`](./skills/growth-analytics-brief), [`news-pr-monitor`](./skills/news-pr-monitor), [`seo-aeo-monitor`](./skills/seo-aeo-monitor), [`seo-article-writer`](./skills/seo-article-writer), [`technical-seo-repo-auditor`](./skills/technical-seo-repo-auditor), [`web-page-change-monitor`](./skills/web-page-change-monitor), [`web-research-agent`](./skills/web-research-agent) |
+| Creator Marketing | [`creator-comment-miner`](./skills/creator-comment-miner), [`instagram-creator-discovery`](./skills/instagram-creator-discovery), [`kol-pricing`](./skills/kol-pricing), [`multi-platform-creator-shortlist`](./skills/multi-platform-creator-shortlist), [`ugc-ad-creative-brief`](./skills/ugc-ad-creative-brief), [`youtube-creator-research`](./skills/youtube-creator-research) |
+| Web3 | [`crypto-narrative-monitor`](./skills/crypto-narrative-monitor), [`token-community-sentiment-pulse`](./skills/token-community-sentiment-pulse), [`web3-kol-watchlist`](./skills/web3-kol-watchlist), [`web3-launch-watch`](./skills/web3-launch-watch) |
+| API Backfill | [`autonomous-channel-agent`](./skills/autonomous-channel-agent), [`crm-export-sequence`](./skills/crm-export-sequence), [`discord-telegram-community-monitor`](./skills/discord-telegram-community-monitor), [`email-contact-finder`](./skills/email-contact-finder), [`paid-ads-operator`](./skills/paid-ads-operator), [`private-workspace-signal-connector`](./skills/private-workspace-signal-connector), [`scheduled-signal-alerts`](./skills/scheduled-signal-alerts), [`web-intent-visitor-tracking`](./skills/web-intent-visitor-tracking), [`web3-onchain-monitor`](./skills/web3-onchain-monitor) |
+
+`kol-pricing` is adapted from [Antoniaiaiaiaia/kol-pricing](https://github.com/Antoniaiaiaiaia/kol-pricing). The other workflow skills are authored here.
+
+Agent-native skills exist because target runtimes already provide search, fetch, shell, and code execution. API-backfill skills exist because the user demand is strong even when some product APIs are not ready yet. Each backfill skill exposes the product/API work needed for full hosted execution.
+
+For strong user requests that the current API does not yet cover, see [API Coverage Gaps](./docs/api-coverage-gaps.md).
+For the demand and quality review behind this portfolio, see [Skill Portfolio Review](./docs/skill-portfolio-review.md).
 
 ## Connect MCP
 
@@ -182,8 +203,13 @@ Use Streamable HTTP with the canonical server URL:
 With the `unifapi` skill and MCP connected, an agent can:
 
 - search public-data operations and choose the right one for the job
-- analyze Twitter/X KOLs, creator profiles, public posts, comments, and trends
-- build influencer shortlists, pricing ranges, competitor snapshots, or market briefs
+- analyze Twitter/X KOLs, creator profiles, public posts, comments, communities, and trends
+- build GTM account briefs, ICP account lists, scored lead tables, LinkedIn lead lists, buyer maps, competitor monitors, and hiring-signal reports
+- find Reddit opportunities, mine voice-of-customer language, monitor launches, and draft strategy briefs, social posts, SEO articles, and channel-specific content briefs
+- create creator shortlists, UGC/ad creative briefs, and KOL analysis across X, Instagram, TikTok, YouTube, LinkedIn, Threads, and Reddit
+- monitor web3 narratives, token communities, launch reactions, and public KOL watchlists using social signals
+- use the host agent's search, fetch, shell, and code execution for web research, HN opportunities, page checks, technical SEO, SEO content, growth analytics exports, backlink/mention checks, marketplace/product checks, and GTM table enrichment
+- define API-backfill workflows for CRM/export, scheduling, publishing, ads, on-chain, private connectors, and contact data while listing the API work needed for full hosted execution
 - call live public-data APIs only when evidence is needed
 - return decision-ready artifacts instead of raw API dumps
 
@@ -221,6 +247,11 @@ For lower-level OAuth fields, troubleshooting, billing behavior, and direct HTTP
 .codex-plugin/plugin.json      OpenAI Codex plugin manifest
 .agents/plugins/marketplace.json  Codex repo marketplace metadata
 plugins/unifapi/               Codex installable plugin bundle
+.agents/skills/                Codex repo/user skill tree
+.claude/skills/                Claude Code skill tree
+.cursor/skills/                Cursor skill tree
+.gemini/skills/                Gemini CLI skill tree
+.github/skills/                GitHub Copilot skill tree
 .claude-plugin/plugin.json     Claude Code plugin manifest
 .claude-plugin/marketplace.json   Claude Code marketplace metadata
 .cursor-plugin/plugin.json     Cursor plugin metadata

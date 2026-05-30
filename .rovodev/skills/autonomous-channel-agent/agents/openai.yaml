@@ -1,0 +1,4 @@
+interface:
+  display_name: "Autonomous Channel Agent"
+  short_description: "Plan Okara-style channel agents that research now and execute after publishing APIs arrive."
+  default_prompt: "Use $autonomous-channel-agent to define channel goals, draftable actions, approval gates, and required scheduling/publishing APIs."

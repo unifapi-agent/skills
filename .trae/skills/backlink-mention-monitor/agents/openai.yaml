@@ -1,0 +1,4 @@
+interface:
+  display_name: "Backlink Mention Monitor"
+  short_description: "Find backlink, mention, and link-building opportunities."
+  default_prompt: "Use $backlink-mention-monitor to inspect public mentions or backlink exports and return prioritized link opportunities."

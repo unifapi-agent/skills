@@ -1,0 +1,143 @@
+#!/usr/bin/env node
+const fs = require('node:fs');
+const path = require('node:path');
+
+const root = path.resolve(__dirname, '..');
+const checkOnly = process.argv.includes('--check');
+
+const providerSkillDirs = [
+  { name: 'Codex repo skills', dest: '.agents/skills' },
+  { name: 'Claude Code skills', dest: '.claude/skills' },
+  { name: 'Cursor skills', dest: '.cursor/skills' },
+  { name: 'Gemini CLI skills', dest: '.gemini/skills' },
+  { name: 'GitHub Copilot skills', dest: '.github/skills' },
+  { name: 'Kiro skills', dest: '.kiro/skills' },
+  { name: 'OpenCode skills', dest: '.opencode/skills' },
+  { name: 'Pi skills', dest: '.pi/skills' },
+  { name: 'Qoder skills', dest: '.qoder/skills' },
+  { name: 'Trae skills', dest: '.trae/skills' },
+  { name: 'Trae China skills', dest: '.trae-cn/skills' },
+  { name: 'Rovo Dev skills', dest: '.rovodev/skills' },
+];
+
+const copyJobs = [
+  { name: 'Codex plugin manifest', src: '.codex-plugin', dest: 'plugins/unifapi/.codex-plugin' },
+  { name: 'Codex plugin MCP config', src: '.mcp.json', dest: 'plugins/unifapi/.mcp.json' },
+  { name: 'Codex plugin skills', src: 'skills', dest: 'plugins/unifapi/skills' },
+  { name: 'Codex plugin docs', src: 'docs', dest: 'plugins/unifapi/docs' },
+  ...providerSkillDirs.map((provider) => ({
+    name: provider.name,
+    src: 'skills',
+    dest: provider.dest,
+  })),
+  ...providerSkillDirs.map((provider) => ({
+    name: `${provider.name} docs`,
+    src: 'docs',
+    dest: path.join(path.dirname(provider.dest), 'docs'),
+  })),
+];
+
+function assertInsideRoot(target) {
+  const rel = path.relative(root, target);
+  if (rel.startsWith('..') || path.isAbsolute(rel)) {
+    throw new Error(`Refusing to write outside repo: ${target}`);
+  }
+}
+
+function copyRecursive(src, dest) {
+  const stat = fs.statSync(src);
+  assertInsideRoot(dest);
+
+  if (stat.isDirectory()) {
+    fs.rmSync(dest, { recursive: true, force: true });
+    fs.mkdirSync(dest, { recursive: true });
+    for (const entry of fs.readdirSync(src).sort()) {
+      if (entry === '.DS_Store') continue;
+      copyRecursive(path.join(src, entry), path.join(dest, entry));
+    }
+    return;
+  }
+
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.copyFileSync(src, dest);
+}
+
+function listFiles(base) {
+  if (!fs.existsSync(base)) return [];
+  const out = [];
+
+  function walk(current) {
+    const stat = fs.statSync(current);
+    if (stat.isDirectory()) {
+      for (const entry of fs.readdirSync(current).sort()) {
+        if (entry === '.DS_Store') continue;
+        walk(path.join(current, entry));
+      }
+      return;
+    }
+    out.push(path.relative(base, current));
+  }
+
+  walk(base);
+  return out.sort();
+}
+
+function equalFiles(left, right) {
+  if (!fs.existsSync(left) || !fs.existsSync(right)) return false;
+  return fs.readFileSync(left).equals(fs.readFileSync(right));
+}
+
+function diffEntry(src, dest) {
+  if (!fs.existsSync(dest)) {
+    return [`missing ${path.relative(root, dest)}`];
+  }
+
+  const srcStat = fs.statSync(src);
+  const destStat = fs.statSync(dest);
+  if (srcStat.isFile()) {
+    return destStat.isFile() && equalFiles(src, dest) ? [] : [`changed ${path.relative(root, dest)}`];
+  }
+
+  const srcFiles = listFiles(src);
+  const destFiles = listFiles(dest);
+  const all = new Set([...srcFiles, ...destFiles]);
+  const diffs = [];
+  for (const rel of [...all].sort()) {
+    const srcFile = path.join(src, rel);
+    const destFile = path.join(dest, rel);
+    if (!srcFiles.includes(rel)) {
+      diffs.push(`extra ${path.relative(root, destFile)}`);
+    } else if (!destFiles.includes(rel)) {
+      diffs.push(`missing ${path.relative(root, destFile)}`);
+    } else if (!equalFiles(srcFile, destFile)) {
+      diffs.push(`changed ${path.relative(root, destFile)}`);
+    }
+  }
+  return diffs;
+}
+
+const diffs = [];
+
+for (const { name, src, dest } of copyJobs) {
+  const srcPath = path.join(root, src);
+  const destPath = path.join(root, dest);
+  if (!fs.existsSync(srcPath)) {
+    throw new Error(`Missing source path: ${src}`);
+  }
+
+  if (checkOnly) {
+    diffs.push(...diffEntry(srcPath, destPath));
+  } else {
+    copyRecursive(srcPath, destPath);
+    console.log(`synced ${name}: ${src} -> ${path.relative(root, destPath)}`);
+  }
+}
+
+if (checkOnly) {
+  if (diffs.length) {
+    console.error('distribution bundles are out of sync:');
+    for (const diff of diffs) console.error(`- ${diff}`);
+    process.exit(1);
+  }
+  console.log('distribution bundles are in sync');
+}

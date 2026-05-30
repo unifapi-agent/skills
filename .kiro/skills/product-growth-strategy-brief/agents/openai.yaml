@@ -1,0 +1,4 @@
+interface:
+  display_name: "Product Growth Strategy Brief"
+  short_description: "Build a sourced product growth strategy and channel playbook."
+  default_prompt: "Use $product-growth-strategy-brief to turn product context and public market evidence into a growth strategy brief."

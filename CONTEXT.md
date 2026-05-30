@@ -1,6 +1,6 @@
 # UnifAPI Skills
 
-UnifAPI Skills is the agent-skill distribution context for UnifAPI. It packages reusable skills that help coding agents use UnifAPI-powered public-data workflows.
+UnifAPI Skills is the agent-skill distribution context for UnifAPI. It packages reusable skills that help agents use UnifAPI-powered public-data workflows plus host-native search, fetch, shell, code, and file-editing capabilities.
 
 ## Language
 
@@ -32,6 +32,30 @@ _Avoid_: Primary MCP auth, required setup, pasted secret
 A Skill that applies UnifAPI to a specific agent workflow or business scenario. `skills/kol-pricing` is the first Workflow Skill.
 _Avoid_: Platform skill, example page, demo app
 
+**Workflow Portfolio**:
+The broad set of Workflow Skills that productize likely public-data use cases across GTM, growth, creator marketing, social listening, web research, SEO, and web3 monitoring. The portfolio is not capped at a round number; it should cover high-probability scenarios that UnifAPI can support with current APIs, near-term public-data operations, or standard host-agent capabilities.
+_Avoid_: API endpoint catalog, fixed 20-skill quota, demo collection
+
+**Agent-Native Capability**:
+A capability provided by target runtimes such as ChatGPT, Codex, or Claude Code, including web search, URL fetch/browser fetch, shell, JS/TS/Python execution, local file reads/writes, and code edits. Skills may use these directly instead of requiring UnifAPI to wrap them first.
+_Avoid_: API gap, unsupported workflow, fake UnifAPI endpoint
+
+**GTM Data Workflow**:
+A Workflow Skill shaped around finding, enriching, scoring, monitoring, or personalizing public GTM signals. It uses Clay-like data steps but returns an agent-ready business artifact.
+_Avoid_: raw lead table, generic sales prompt, private CRM workflow
+
+**Channel Agent Output**:
+The opportunity brief, alert, draft, or action plan produced by a Workflow Skill for a specific public channel. It borrows the Okara-style channel-agent framing without implying autonomous publishing or private account access.
+_Avoid_: scheduled autopilot, CMS publisher, ad account operator
+
+**Coverage Gap**:
+A documented strong user need that UnifAPI Skills should acknowledge but cannot fully productize with the current UnifAPI public-data API surface and host-agent capabilities. Generic search/fetch/shell/code should not be treated as a UnifAPI Coverage Gap by itself; gaps are for scale, persistence, private connectors, write actions, normalized schemas, compliance metadata, or source-specific data that the runtime cannot provide.
+_Avoid_: hidden limitation, broken skill, unsupported promise
+
+**API Backfill Skill**:
+A Workflow Skill for a high-demand user job where the skill surface should exist before every productized API is ready. API Backfill Skills must label current coverage, agent-native execution paths when available, and API backfill requirements instead of pretending hosted execution is supported.
+_Avoid_: fake supported skill, endpoint wishlist only, hidden roadmap item
+
 **Skill Package**:
 The portable contents of a Skill: `SKILL.md`, references, scripts, and agent metadata. It excludes the original app UI, server, and local product config unless those files are specifically rewritten as skill assets.
 _Avoid_: Full app migration, repository mirror, source app
@@ -45,8 +69,12 @@ The preferred packaging model for non-developer users. Users install UnifAPI fro
 _Avoid_: CLI-first onboarding, raw skill install as primary CTA, pasted-token setup
 
 **Codex Plugin Bundle**:
-The installable Codex plugin directory under `plugins/unifapi`. It must contain `.codex-plugin/plugin.json`, `.mcp.json`, and the full `skills/` tree so Codex marketplace installation caches both MCP and Skills.
-_Avoid_: marketplace entry pointing at repo root, symlink-only bundle, missing MCP or skill files
+The generated installable Codex plugin directory under `plugins/unifapi`. It must contain `.codex-plugin/plugin.json`, `.mcp.json`, linked docs, and the full `skills/` tree so Codex marketplace installation caches both MCP and Skills. The root repo remains the source of truth; regenerate the bundle with `scripts/build`.
+_Avoid_: hand-edited bundle, marketplace entry pointing at repo root, symlink-only bundle, missing MCP or skill files
+
+**Provider-Native Skill Tree**:
+Generated copies of the canonical root `skills/` tree under platform-native locations such as `.agents/skills`, `.claude/skills`, `.cursor/skills`, `.gemini/skills`, `.github/skills`, `.kiro/skills`, `.opencode/skills`, `.pi/skills`, `.qoder/skills`, `.trae*/skills`, and `.rovodev/skills`. These exist for agent clients that discover skills from provider-specific directories. Edit root `skills/` and regenerate; do not hand-edit provider copies.
+_Avoid_: platform fork, manual duplicate, divergent skill definition
 
 ## Example Dialogue
 
@@ -85,3 +113,11 @@ Domain expert: "No. Use `plugins/unifapi` as the Codex marketplace bundle so ins
 Dev: "Should KOL Pricing bring over the Vue/Hono app?"
 
 Domain expert: "No. Bring only the Skill Package: workflow, references, scripts, and agent metadata."
+
+Dev: "Should the new GTM skills be exactly twenty API wrappers?"
+
+Domain expert: "No. Build a Workflow Portfolio: enough Workflow Skills to cover high-probability GTM, growth, creator, social listening, and web3 monitoring scenarios, while keeping API limitations explicit in Coverage Gaps."
+
+Dev: "Should core demand like SEO, web research, CRM export, or on-chain monitors be omitted until APIs are ready?"
+
+Domain expert: "No. Create skills for the important jobs now. Use agent-native search, fetch, shell, and code when the runtime can execute the workflow, and list API backfill only for productized scale, persistence, connectors, write actions, and source-specific data."

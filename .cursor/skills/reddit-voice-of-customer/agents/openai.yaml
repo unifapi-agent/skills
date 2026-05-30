@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reddit Voice Of Customer"
+  short_description: "Create a voice-of-customer brief that helps with landing-page copy, positioning, co..."
+  default_prompt: "Use $reddit-voice-of-customer to gather public evidence through UnifAPI and return a decision-ready brief."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Instagram Creator Discovery"
+  short_description: "Build a creator shortlist with public evidence of niche fit, content format, engage..."
+  default_prompt: "Use $instagram-creator-discovery to gather public evidence through UnifAPI and return a decision-ready brief."

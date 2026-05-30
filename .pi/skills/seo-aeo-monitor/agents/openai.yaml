@@ -1,0 +1,4 @@
+interface:
+  display_name: "SEO AEO Monitor"
+  short_description: "Run agent-native SEO/AEO checks and separate tracked API gaps."
+  default_prompt: "Use $seo-aeo-monitor to inspect pages or repo evidence, gather demand/search signals, and note rank/AEO API backfill needs."
