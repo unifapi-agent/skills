@@ -2,7 +2,7 @@
 
 [![skills.sh](https://skills.sh/b/unifapi-agent/skills)](https://skills.sh/unifapi-agent/skills)
 
-Agent-ready workflows and OAuth MCP access for researching public data with UnifAPI. Install the plugin in your AI client to get reusable skills, agent-native search/fetch/code workflows, and the hosted UnifAPI MCP server for live public social and professional-platform data.
+Agent-ready workflows and OAuth MCP access for researching public data with [UnifAPI](https://unifapi.com/). Install the [UnifAPI Skills plugin](https://unifapi.com/skills) in your AI client to get reusable skills, agent-native search/fetch/code workflows, and the hosted UnifAPI MCP server for live public social and professional-platform data.
 
 Use this repo when you want an agent to produce a ranked table, creator brief, market scan, competitor monitor, lead list, or evidence-backed research summary without wiring every data API by hand.
 
